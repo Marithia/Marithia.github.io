@@ -1,0 +1,22 @@
+ul li{
+	display: inline;
+}
+
+@media screen and (max-width: 480px) {
+	ul li{
+	display: block;
+}
+}
+nav select {
+ display: none;
+}
+@media (max-width: 960px) {
+ nav ul { display: none; }
+ nav select { display: inline-block; }
+}
+
+@media (max-width: 960px) {
+ nav ul { display: none; }
+ nav select { display: inline-block; }
+ img {height: 150px; }
+}
