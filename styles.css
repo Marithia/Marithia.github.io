@@ -22,7 +22,7 @@ h2 {
 }
 
 p {
-   font-size: 1.5em;    
+   font-size: 2em;    
 }
 
 
@@ -32,26 +32,18 @@ p {
 .container div{
     //the child
     padding: 5px;
-/*    padding-left: 100px;*/
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 10px;
     padding-bottom: 50px;
     margin-left: 20em;
-/*    margin-right: 50em;*/
-    /*border: 5px solid #d9f5f0;*/
-/*    background-color: #fffa75;*/
-    /*flex: 1 0 10em;*/
-    /*align-items: center;*/
-/*    max-width: 60em;*/
-    /*// item property flex: flex-grow flex-shrink flex-basis;*/
-    /*width: 100em;*/
 }
 
 .box p{
    align-items: center;
    justify-content: center;
    max-width: 50em;
+   font-size: 20px;
 }
 
 .broken {
@@ -67,11 +59,8 @@ p {
      display: flex;
      margin: auto;
      padding-top: 1em;
-     /*border: 1em green solid;*/
-
     }
  .part1 {
-  /*border: 1em blue solid;*/
   display: flex;
   flex-direction: column;
  }
@@ -80,13 +69,12 @@ p {
 
   .box {
     padding-top: 10em;
-/*border: 1em blue solid;*/
   }
 
   .box-left{
    display: inline-block;
       margin: auto;
-      padding-bottom: 10em;
+      padding-bottom: 5em;
       padding-right: 5em;
 /*border: 1em blue solid;*/
  }
@@ -103,8 +91,7 @@ p {
    float: center;
      display: inline-block;
      margin: auto;
-     /*border: 1em pink solid;*/
-     /*padding-top: 12em;*/
+
      padding-left: 5em;
      padding-top: 15em;
     }
@@ -114,28 +101,17 @@ p {
 }
 
 
-.TA {
-
-}
-   
-
  .part1 {
-  /*border: 1em blue solid;*/
   display: flex;
   flex-direction: row;
  }
     
  }
 
-
-
-
-
 }
 
 
 .box1 {
-/*  background-color: #f2fdff;*/
  padding: 1em;
 }
 
@@ -146,11 +122,6 @@ p {
   max-height: 70em;
   margin: auto;
   float: center;
-}
-
-.home {
-   margin: auto;
-   float: inherit;
 }
 
 
