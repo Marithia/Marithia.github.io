@@ -5,12 +5,14 @@ body {
     padding-top: 5em;
 }
 
+/*Title font*/
 h1 {
     font-family: 'Roboto';
     font-size: 3em;
     text-align: center;
 }
 
+/*Info textt*/
 h2 {
    font-family: 'Roboto';
    font-size: 3em; 
@@ -25,10 +27,8 @@ p {
    font-size: 2em;    
 }
 
-
 }
-
-
+/*Container with the all the content in the page*/
 .container div{
     //the child
     padding: 5px;
@@ -39,6 +39,7 @@ p {
     margin-left: 20em;
 }
 
+/*Font for paragraphs*/
 .box p{
    align-items: center;
    justify-content: center;
@@ -46,6 +47,7 @@ p {
    font-size: 20px;
 }
 
+/*another container*/
 .broken {
     max-width: 100em;
    align-items: center;
@@ -53,7 +55,9 @@ p {
    margin: auto;
 }
 
+/*Div of the about, target audience, and example app image*/
 @media (min-width: 0px) {
+  /*Eample app image*/
  .box-right img{
    display: inline-block;
      display: flex;
@@ -65,18 +69,19 @@ p {
   flex-direction: column;
  }
 }
+
 @media (min-width: 1300px) {
 
   .box {
     padding-top: 10em;
   }
 
+/*About box*/
   .box-left{
    display: inline-block;
       margin: auto;
       padding-bottom: 5em;
       padding-right: 5em;
-/*border: 1em blue solid;*/
  }
 
  .item {
@@ -85,6 +90,7 @@ p {
   float: top;
 }
 
+/*Example app image*/
  .box-right img{
    align-items: center;
    justify-content: center;
@@ -101,6 +107,11 @@ p {
 }
 
 
+.TA {
+
+}
+
+
  .part1 {
   display: flex;
   flex-direction: row;
@@ -109,12 +120,9 @@ p {
  }
 
 }
+/*End of div of the about, target audience, and example app image*/
 
-
-.box1 {
- padding: 1em;
-}
-
+/*Logo image*/
 .logo {
   max-width: 100%;
   display: flex;
@@ -125,7 +133,7 @@ p {
 }
 
 
-
+/*How it works /key features*/
 .HIW {
 padding-bottom: 10em;
 }
