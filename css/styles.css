@@ -149,3 +149,12 @@ p {
 .HIW {
 padding-bottom: 10em;
 }
+
+/*Example images*/
+.exampleimg {
+  padding-left: 5em;
+  margin: auto;
+  float: center;
+  padding-bottom: 10em;
+}
+
