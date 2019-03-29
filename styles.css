@@ -106,6 +106,7 @@ p {
      /*border: 1em pink solid;*/
      /*padding-top: 12em;*/
      padding-left: 5em;
+     padding-top: 15em;
     }
 .box-left box-right img
 {
@@ -155,7 +156,5 @@ p {
 
 
 .HIW {
-/*   isplay: inline-block;*/
-   /*width: 50%;*/
-/  padding-top: 5em;
+padding-bottom: 10em;
 }
