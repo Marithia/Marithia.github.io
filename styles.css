@@ -152,9 +152,6 @@ padding-bottom: 10em;
 
 /*Example images*/
 .exampleimg {
-  /*align-items: center;*/
-   /*justify-content: center;*/
-   /*display: flex;*/
   margin: auto;
   float: center;
   padding-bottom: 10em;
@@ -162,9 +159,6 @@ padding-bottom: 10em;
 }
 
 .exampleimg2 {
-  /*align-items: center;*/
-   /*justify-content: center;*/
-   /*display: flex;*/
   margin: auto;
   float: center;
   padding-bottom: 10em;
