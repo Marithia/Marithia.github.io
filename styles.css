@@ -26,7 +26,6 @@ h2 {
 p {
    font-size: 2em;    
 }
-
 }
 /*Container with the all the content in the page*/
 .container div{
@@ -68,6 +67,21 @@ p {
   display: flex;
   flex-direction: column;
  }
+
+ /*Logo image*/
+.logo {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 2000px;
+  margin: auto;
+  /*float: center;*/
+}
+
+.box-left box-right img{
+  width: 50px;
+}
+
 }
 
 @media (min-width: 1300px) {
@@ -97,12 +111,10 @@ p {
    float: center;
      display: inline-block;
      margin: auto;
-
      padding-left: 5em;
      padding-top: 15em;
     }
-.box-left box-right img
-{
+.box-left box-right img{
   width: 50px;
 }
 
@@ -126,10 +138,10 @@ p {
 .logo {
   max-width: 100%;
   display: flex;
-  min-height: 10em;
-  max-height: 70em;
+  flex-direction: row;
+  width: 200px;
   margin: auto;
-  float: center;
+  /*float: center;*/
 }
 
 
