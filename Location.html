@@ -5,7 +5,6 @@
 <p>Click the button to get your coordinates.</p>
 
 <button onclick="getLocation()">Get location</button>
-<button onclick="getLocation()">Try It</button>
 
 <p id="demo"></p>
 
@@ -22,11 +21,6 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
-
-function thisPosition(position) {
   x.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude;
 }
