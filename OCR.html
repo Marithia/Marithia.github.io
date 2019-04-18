@@ -103,7 +103,7 @@ function startWebcam(stream){
                     <div id="clear" onclick="reset_canvas()">&times;</div>
                     <div id="word" onclick="da_word()">&#8635;</div>
                 </div>
-                <!-- <div class="output nose" style="padding: 25px; cursor: pointer" onclick="open_picker()"> -->
+                 <div class="output nose" style="padding: 25px; cursor: pointer" onclick="open_picker()"> 
                     You can also <strong>drag and drop</strong> an image from your computer <small>(JPEG, PNG, GIF, BMP, SVG, or NetPBM)</small> to feed into the text recognizer or <strong>choose a file</strong> by clicking anywhere on this box. 
                     
                 </div>
@@ -201,15 +201,15 @@ function startWebcam(stream){
                 return false;
             }
 
-            // function open_picker(){
-            //     var e = document.createEvent("MouseEvents");    
-            //     e.initEvent('click', true, true);
-            //     document.getElementById('picker').dispatchEvent(e);
-            // }
+             function open_picker(){
+                 var e = document.createEvent("MouseEvents");    
+                 e.initEvent('click', true, true);
+                 document.getElementById('picker').dispatchEvent(e);
+             }
 
             function picked_file(file){
                 if(!file) return;
-                // document.getElementById("output").className = 'processing'
+                 document.getElementById("output").className = 'processing'
 
                 var ext = file.name.split('.').slice(-1)[0];
                 var reader = new FileReader();
