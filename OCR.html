@@ -72,7 +72,28 @@ document.getElementById("snap").addEventListener("click", function() {
             <button class="btn btn-lg btn-success" id="adjust" disabled>Done</button>
         </div>
     
-    
+    <div id="step3">
+            <h1><i class="glyphicon glyphicon-text-height"></i></h1>
+
+            <p class="lead">You'll find the recognized text below.</p>
+
+            <figure>
+                <canvas></canvas>
+            </figure>
+
+            <blockquote>
+                <div class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <p id="result"></p>
+                <footer></footer>
+            </blockquote>
+
+            <button class="btn btn-lg btn-default" id="go-back">Go back</button>
+            <button class="btn btn-lg btn-default" id="start-over">Start over</button>
+        </div>
     
     
     <input type="file" style="position:absolute; top: -100px" id="picker" onchange="picked_file(this.files[0])">
