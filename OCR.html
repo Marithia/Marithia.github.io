@@ -20,12 +20,9 @@
     var string = OCRAD(image);
     alert(string);
     </script> -->
-      
-<video id="video" width="640" height="480" autoplay></video>
-<button id="snap">Snap Photo</button>
-<canvas id="canvas" width="640" height="480"></canvas>
-
-<script>
+    
+    
+    <script>
 
 // Grab elements, create settings, etc.
 var video = document.getElementById('video');
@@ -49,8 +46,27 @@ var video = document.getElementById('video');
 document.getElementById("snap").addEventListener("click", function() {
 	context.drawImage(video, 0, 0, 640, 480);
 });
-</script>    
+</script>
+    
+    
+      
+<video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
 
+<a href="#" class="button" id="btn-download">Download</a>
+
+<script>
+var button = document.getElementById('btn-download');
+button.addEventListener('click', function (e) {
+    var dataURL = canvas.toDataURL('image/png');
+    button.href = dataURL;
+});    
+</script>
+
+
+<a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>
+    
     
 <script src="java.js"></script>
 
