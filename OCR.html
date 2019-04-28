@@ -91,7 +91,7 @@ document.getElementById('download').addEventListener('click', function() {
 <!--<a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>-->
     
     
-<script src="java.js"></script>
+<!--<script src="java.js"></script>-->
 
     
     
@@ -142,6 +142,9 @@ document.getElementById('download').addEventListener('click', function() {
 <!--        </div>-->
     
     <script>
+        var fxCanvas = null;
+    var texture = null;
+        
         texture = fxCanvas.texture(canvas);
         fxCanvas.draw(texture)
             .hueSaturation(-1, -1)//grayscale
