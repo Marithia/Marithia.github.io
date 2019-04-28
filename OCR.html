@@ -26,8 +26,8 @@
 <button id="snap">Snap Photo</button>
 <canvas id="canvas" width="640" height="480"></canvas>
 
-<a href="#" class="button" id="btn-download">Download</a>
-    
+<!--<a href="#" class="button" id="btn-download">Download</a>-->
+    <a id="download">Download Image</a>
     
     <script>
 
@@ -45,11 +45,12 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 }
     
 // Elements for taking the snapshot
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 var context = canvas.getContext('2d');
 var video = document.getElementById('video');
         
 
+        
 // Trigger photo take
 document.getElementById("snap").addEventListener("click", function() {
 	context.drawImage(video, 0, 0, 640, 480);
@@ -61,10 +62,13 @@ function downloadCanvas(link, canvasId, filename) {
     link.download = filename;
 }
         
+document.getElementById('download').addEventListener('click', function() {
+    downloadCanvas(this, 'canvas', 'test.png');
+}, false);
+        
 </script>
     
-    
-      
+     
 
 
 <!--
