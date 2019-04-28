@@ -49,24 +49,25 @@ var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 var video = document.getElementById('video');
         
-function downloadCanvas(link, canvasId, filename) {
-    link.href = document.getElementById(canvasId).toDataURL();
-    link.download = filename;
-}
-        
 
 // Trigger photo take
 document.getElementById("snap").addEventListener("click", function() {
 	context.drawImage(video, 0, 0, 640, 480);
 });
         
-
+        
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+        
 </script>
     
     
       
 
 
+<!--
 <script>
 var button = document.getElementById('btn-download');
 button.addEventListener('click', function (e) {
@@ -80,6 +81,7 @@ document.getElementById('download').addEventListener('click', function() {
 }, false);
 
 </script>
+-->
 
 
 <!--<a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>-->
