@@ -76,6 +76,59 @@ document.getElementById('download').addEventListener('click', function() {
     downloadCanvas(this, 'canvas', 'test.png');
 }, false);
         
+        
+
+var fxCanvas = null;
+    var texture = null;
+        
+        texture = fxCanvas.texture(canvas);
+        fxCanvas.draw(texture)
+            .hueSaturation(-1, -1)//grayscale
+            .unsharpMask(20, 2)
+            .brightnessContrast(0.2, 0.9)
+            .update();
+
+        window.texture = texture;
+        window.fxCanvas = fxCanvas;
+
+        $(img)
+            //setup the crop utility
+            .one('load', function () {
+                if (!$(img).data().Jcrop) {
+                    $(img).Jcrop({
+                        onSelect: function () {
+                            //Enable the 'done' button
+                            $('#adjust').removeAttr('disabled');
+                        }
+                    });
+                } else {
+                    //update crop tool (it creates copies of <img> that we have to update manually)
+                    $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
+                }
+            })
+            //show output from glfx.js
+            .attr('src', fxCanvas.toDataURL());
+    
+    
+    $('#brightness, #contrast').on('change', function () {
+        var brightness = $('#brightness').val() / 100;
+        var contrast = $('#contrast').val() / 100;
+//        var img = document.querySelector('#step2 img');
+
+        fxCanvas.draw(texture)
+            .hueSaturation(-1, -1)
+            .unsharpMask(20, 2)
+            .brightnessContrast(brightness, contrast)
+            .update();
+
+        img.src = fxCanvas.toDataURL();
+
+        //update crop tool (it creates copies of <img> that we have to update manually)
+        $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
+    });
+        
+        
+
 </script>
     
      
@@ -153,6 +206,7 @@ document.getElementById('download').addEventListener('click', function() {
 -->
 <!--        </div>-->
     
+<!--
     <script>
         var fxCanvas = null;
     var texture = null;
@@ -203,6 +257,7 @@ document.getElementById('download').addEventListener('click', function() {
         $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
     });
     </script>
+-->
     
     
     <div id="step3">
