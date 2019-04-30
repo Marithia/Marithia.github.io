@@ -44,40 +44,7 @@
     
     
     <script>
-(function () {
-//    var video = document.querySelector('video');
 
-    var pictureWidth = 640;
-    var pictureHeight = 360;
-
-    var fxCanvas = null;
-    var texture = null;
-
-    function checkRequirements() {
-        var deferred = new $.Deferred();
-
-        //Check if getUserMedia is available
-        if (!Modernizr.getusermedia) {
-            deferred.reject('Your browser doesn\'t support getUserMedia (according to Modernizr).');
-        }
-
-        //Check if WebGL is available
-        if (Modernizr.webgl) {
-            try {
-                //setup glfx.js
-                fxCanvas = fx.canvas();
-            } catch (e) {
-                deferred.reject('Sorry, glfx.js failed to initialize. WebGL issues?');
-            }
-        } else {
-            deferred.reject('Your browser doesn\'t support WebGL (according to Modernizr).');
-        }
-
-        deferred.resolve();
-
-        return deferred.promise();
-    }
-}
         
         
 
@@ -167,7 +134,40 @@ var fxCanvas = null;
     });
         
         
+(function () {
+//    var video = document.querySelector('video');
 
+    var pictureWidth = 640;
+    var pictureHeight = 360;
+
+    var fxCanvas = null;
+    var texture = null;
+
+    function checkRequirements() {
+        var deferred = new $.Deferred();
+
+        //Check if getUserMedia is available
+        if (!Modernizr.getusermedia) {
+            deferred.reject('Your browser doesn\'t support getUserMedia (according to Modernizr).');
+        }
+
+        //Check if WebGL is available
+        if (Modernizr.webgl) {
+            try {
+                //setup glfx.js
+                fxCanvas = fx.canvas();
+            } catch (e) {
+                deferred.reject('Sorry, glfx.js failed to initialize. WebGL issues?');
+            }
+        } else {
+            deferred.reject('Your browser doesn\'t support WebGL (according to Modernizr).');
+        }
+
+        deferred.resolve();
+
+        return deferred.promise();
+    }
+}
 </script>
     
      
