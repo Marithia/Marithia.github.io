@@ -25,6 +25,16 @@
     <video id="video" width="640" height="480" autoplay></video>
 <button id="snap">Snap Photo</button>
 <canvas id="canvas" width="640" height="480"></canvas>
+    
+    
+    
+    <p>Brightness: <input type="range" min="0" max="100" id="brightness" value="20"></p>
+
+    <p>Contrast: <input type="range" min="0" max="100" id="contrast" value="90"></p>
+
+<!--    <button class="btn btn-lg btn-success" id="adjust" disabled>Done</button>-->
+    
+    
 
 <!--<a href="#" class="button" id="btn-download">Download</a>-->
     <a id="download">Download Image</a>
@@ -134,11 +144,13 @@ document.getElementById('download').addEventListener('click', function() {
             </figure>
 -->
 
+<!--
             <p>Brightness: <input type="range" min="0" max="100" id="brightness" value="20"></p>
 
             <p>Contrast: <input type="range" min="0" max="100" id="contrast" value="90"></p>
 
             <button class="btn btn-lg btn-success" id="adjust" disabled>Done</button>
+-->
 <!--        </div>-->
     
     <script>
