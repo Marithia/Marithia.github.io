@@ -152,7 +152,7 @@ var fxCanvas = null;
     $('#brightness, #contrast').on('change', function () {
         var brightness = $('#brightness').val() / 100;
         var contrast = $('#contrast').val() / 100;
-        var img = document.querySelector('canvas img');
+        var img = document.querySelector('#canvas');
 
         fxCanvas.draw(texture)
             .hueSaturation(-1, -1)
