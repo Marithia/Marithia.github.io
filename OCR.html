@@ -113,7 +113,7 @@ var fxCanvas = null;
     $('#brightness, #contrast').on('change', function () {
         var brightness = $('#brightness').val() / 100;
         var contrast = $('#contrast').val() / 100;
-//        var img = document.querySelector('#step2 img');
+        var img = document.querySelector('canvas img');
 
         fxCanvas.draw(texture)
             .hueSaturation(-1, -1)
@@ -591,6 +591,6 @@ document.getElementById('download').addEventListener('click', function() {
 <script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>
 <script src="vendor/glfx.min.js"></script>
 <script src="java.js"></script> -->
-
+<script src="vendor/glfx.min.js"></script>
 </body>
 </html>
