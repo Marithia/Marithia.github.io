@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <title>OCR Test</title>
+
+</head>
+<body>
+    
+
+<h1>OCR Test</h1>
+
+<div id="container">
+
+<video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Take a photo!</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+
+<!-- ////////Download button,from https://jsfiddle.net/wboykinm/fL0q2uce/////////  -->
+    <a id="download">Download Image</a>
+       
+    <script>
+
+////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
+var video = document.getElementById('video');
+
+//Camera
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+    });
+}
+    
+//Canvas stuff
+var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+        
+
+//Take a photo
+document.getElementById("snap").addEventListener("click", function() {
+	context.drawImage(video, 0, 0, 640, 480);
+});
+////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////         
+
+
+////////Start of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+        
+document.getElementById('download').addEventListener('click', function() {
+    downloadCanvas(this, 'canvas', 'image.png');
+}, false);
+////////End of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
+
+</script>
+    
+<!-- ////////Start of OCR, from https://github.com/antimatter15/ocrad.js with changes///////// -->     
+    <input type="file" style="position:absolute; top: -100px" id="picker" onchange="picked_file(this.files[0])">
+
+<div id="ocr">
+                
+    <canvas id='c' class="" width="400" height="300"></canvas>
+    <div class="output nose" style="padding: 25px; cursor: pointer" onclick="open_picker()"> 
+        Drag and drop an image here or click this box to upload an image. 
+    </div>
+
+<div class="output">
+
+    <div id="output">
+    <div id="text"></div>
+    <span id="timing"></span>
+    </div>
+    </div>
+    </div>
+
+    <script src="ocrad.js"></script>
+
+    <script>
+
+            var c = document.getElementById('c'),
+                o = c.getContext('2d');
+
+            function reset_canvas(){
+                o.fillStyle = 'white'
+                o.fillRect(0, 0, c.width, c.height)
+                o.fillStyle = 'black'   
+            }
+
+
+            document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
+            document.body.ondragend = function(){ document.body.className = ''; return false }
+            document.body.onclick = function(){document.body.className = '';}
+            document.body.ondrop = function(e){
+                e.preventDefault();
+                document.body.className = '';
+                picked_file(e.dataTransfer.files[0]);
+                return false;
+            }
+
+             function open_picker(){
+                 var e = document.createEvent("MouseEvents");    
+                 e.initEvent('click', true, true);
+                 document.getElementById('picker').dispatchEvent(e);
+             }
+
+            function picked_file(file){
+                if(!file) return;
+                 document.getElementById("output").className = 'processing'
+
+                var ext = file.name.split('.').slice(-1)[0];
+                var reader = new FileReader();
+
+                if(file.type == "image/x-portable-bitmap" || ext == 'pbm' || ext == 'pgm' || ext == 'pnm' || ext == 'ppm'){
+                    reader.onload = function(){
+                        reset_canvas();
+                        document.getElementById("text").innerHTML = 'Reading..'
+                        o.font = '30px sans-serif'
+                        o.fillText('No previews for NetPBM format.', 50, 100);
+                        runOCR(new Uint8Array(reader.result), true);
+                    }
+                    reader.readAsArrayBuffer(file)
+                }else{
+                    reader.onload = function(){
+                        var img = new Image();
+                        img.src = reader.result;
+                        img.onerror = function(){
+                            reset_canvas();
+                            o.font = '30px sans-serif'
+                            o.fillText('Error: Invalid Image ' + file.name, 50, 100);
+                        }
+                        img.onload = function(){
+                            document.getElementById("text").innerHTML = 'Reading...'
+                            reset_canvas();
+                            var rat = Math.min(c.width / img.width, c.height / img.height);
+                            o.drawImage(img, 0, 0, img.width * rat, img.height * rat)
+                            var tmp = document.createElement('canvas')
+                            tmp.width = img.width;
+                            tmp.height = img.height;
+                            var ctx = tmp.getContext('2d')
+                            ctx.drawImage(img, 0, 0)
+                            var image_data = ctx.getImageData(0, 0, tmp.width, tmp.height);
+                            runOCR(image_data, true)
+                        }
+                        
+                    }
+                    reader.readAsDataURL(file)
+                }
+                
+            }
+
+            var lastWorker;
+            var worker = new Worker('worker.js')
+            function runOCR(image_data, raw_feed){
+                document.getElementById("output").className = 'processing'
+                worker.onmessage = function(e){
+
+                    document.getElementById("output").className = ''
+                    
+                    if('innerText' in document.getElementById("text")){
+                        document.getElementById("text").innerText = e.data
+                    }else{
+                        document.getElementById("text").textContent = e.data    
+                    }
+                    document.getElementById('timing').innerHTML = 'Reading took ' + ((Date.now() - start)/1000).toFixed(2) + 's';
+                }
+                var start = Date.now()
+                if(!raw_feed){
+                    image_data = o.getImageData(0, 0, c.width, c.height);   
+                }
+
+                worker.postMessage(image_data)
+                lastWorker = worker;
+            }
+
+            reset_canvas()
+
+            ////////End of OCR, from https://github.com/antimatter15/ocrad.js with changes///////// 
+        </script>
+
+</body>
+</html>
