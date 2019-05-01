@@ -186,53 +186,53 @@ document.getElementById('download').addEventListener('click', function() {
             reset_canvas()
 
     
-            // var fonts = ['Droid Sans', 'Philosopher', 'Alegreya Sans', 'Chango', 'Coming Soon', 'Allan', 'Cardo', 'Bubbler One', 'Bowlby One SC', 'Prosto One', 'Rufina', 'Cantora One', 'Denk One', 'Play', 'Architects Daughter', 'Nova Square', 'Inder', 'Gloria Hallelujah', 'Telex', 'Comfortaa', 'Merienda', 'Boogaloo', 'Krona One', 'Orienta', 'Sofadi One', 'Source Sans Pro', 'Revalia', 'Overlock', 'Kelly Slab', 'Rye', 'Butcherman', 'Lato', 'Milonga', 'Aladin', 'Princess Sofia', 'Audiowide', 'Italiana', 'Michroma', 'Cabin Condensed', 'Jura', 'Marko One', 'PT Mono', 'Bubblegum Sans', 'Amaranth']
+            var fonts = ['Droid Sans', 'Philosopher', 'Alegreya Sans', 'Chango', 'Coming Soon', 'Allan', 'Cardo', 'Bubbler One', 'Bowlby One SC', 'Prosto One', 'Rufina', 'Cantora One', 'Denk One', 'Play', 'Architects Daughter', 'Nova Square', 'Inder', 'Gloria Hallelujah', 'Telex', 'Comfortaa', 'Merienda', 'Boogaloo', 'Krona One', 'Orienta', 'Sofadi One', 'Source Sans Pro', 'Revalia', 'Overlock', 'Kelly Slab', 'Rye', 'Butcherman', 'Lato', 'Milonga', 'Aladin', 'Princess Sofia', 'Audiowide', 'Italiana', 'Michroma', 'Cabin Condensed', 'Jura', 'Marko One', 'PT Mono', 'Bubblegum Sans', 'Amaranth']
             
 
-            // function fisher_yates(a) {
-            //     for (var i = a.length - 1; i > 0; i--) {
-            //         var j = Math.floor(Math.random() * (i + 1));
-            //         var temp = a[i]; a[i] = a[j]; a[j] = temp;
-            //     }
-            // }
+            function fisher_yates(a) {
+                for (var i = a.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = a[i]; a[i] = a[j]; a[j] = temp;
+                }
+            }
 
-            // fisher_yates(fonts);
-            // fisher_yates(quotes);
+            fisher_yates(fonts);
+            fisher_yates(quotes);
 
-            // function da_word(){
-            //     reset_canvas()
+            function da_word(){
+                reset_canvas()
                 
-            //     var font = fonts.shift(); fonts.push(font); // do a rotation
+                var font = fonts.shift(); fonts.push(font); // do a rotation
 
-            //     if(Math.random() > 0.7){
-            //         var phrase = font;
-            //     }else{
-            //         var phrase = quotes.shift() //quotes[Math.floor(quotes.length * Math.random())];
-            //         quotes.push(phrase);
-            //     }
+                if(Math.random() > 0.7){
+                    var phrase = font;
+                }else{
+                    var phrase = quotes.shift() //quotes[Math.floor(quotes.length * Math.random())];
+                    quotes.push(phrase);
+                }
                 
-            //     WebFont.load({
-            //         google: {
-            //             families: [font]
-            //         },
-            //         active: function(){
-            //             o.font = '30px "' + font + '"'
-            //             var words = phrase.split(' '), buf = [], n = 70;
-            //             for(var i = 0; i < words.length; i++){
-            //                 buf.push(words[i])
-            //                 if(buf.join(' ').length > 15 || i == words.length - 1){
-            //                     o.fillText(buf.join(' '), 50, n);
-            //                     buf = []
-            //                     n += 50
-            //                 }
-            //             }
-            //             runOCR(phrase);
-            //         }
-            //     })
-            // }
+                WebFont.load({
+                    google: {
+                        families: [font]
+                    },
+                    active: function(){
+                        o.font = '30px "' + font + '"'
+                        var words = phrase.split(' '), buf = [], n = 70;
+                        for(var i = 0; i < words.length; i++){
+                            buf.push(words[i])
+                            if(buf.join(' ').length > 15 || i == words.length - 1){
+                                o.fillText(buf.join(' '), 50, n);
+                                buf = []
+                                n += 50
+                            }
+                        }
+                        runOCR(phrase);
+                    }
+                })
+            }
 
-            // o.font = '30px sans-serif'
-            // runOCR();
+            o.font = '30px sans-serif'
+            runOCR();
 
             ////////End of download image script, from https://github.com/antimatter15/ocrad.js with changes///////// 
         </script>
