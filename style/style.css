@@ -1,0 +1,30 @@
+body {
+    background-color: aliceblue;
+}
+
+#ocr {
+    margin-bottom: 50px;
+    background: white;
+}
+
+#ocr {
+    margin-bottom: 50px;
+    background: white;
+}
+
+.output {
+    background-color: ivory;
+}
+
+#output {
+    padding: 20px;
+    padding-bottom: 0;
+    text-align: center; 
+    min-height: 80px;
+    color: black;
+}
+
+.nose:hover {
+	background-color: rgb(255, 222, 211);
+}
+            
