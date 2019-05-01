@@ -28,9 +28,11 @@
     
     
     
+<!--
     <p>Brightness: <input type="range" min="0" max="100" id="brightness" value="20"></p>
 
     <p>Contrast: <input type="range" min="0" max="100" id="contrast" value="90"></p>
+-->
 
 <!--    <button class="btn btn-lg btn-success" id="adjust" disabled>Done</button>-->
     
@@ -40,7 +42,7 @@
     <a id="download">Download Image</a>
     
     
-<script src="glfx.js"></script>
+<!--<script src="glfx.js"></script>-->
     
     
     <script>
@@ -84,90 +86,90 @@ document.getElementById('download').addEventListener('click', function() {
         
         
 
-var fxCanvas = null;
-    var texture = null;
-        
-        texture = fxCanvas.texture(canvas);
-        fxCanvas.draw(texture)
-            .hueSaturation(-1, -1)//grayscale
-            .unsharpMask(20, 2)
-            .brightnessContrast(0.2, 0.9)
-            .update();
-
-        window.texture = texture;
-        window.fxCanvas = fxCanvas;
-
-        $(img)
-            //setup the crop utility
-            .one('load', function () {
-                if (!$(img).data().Jcrop) {
-                    $(img).Jcrop({
-                        onSelect: function () {
-                            //Enable the 'done' button
-                            $('#adjust').removeAttr('disabled');
-                        }
-                    });
-                } else {
-                    //update crop tool (it creates copies of <img> that we have to update manually)
-                    $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
-                }
-            })
-            //show output from glfx.js
-            .attr('src', fxCanvas.toDataURL());
-    
-    
-    $('#brightness, #contrast').on('change', function () {
-        var brightness = $('#brightness').val() / 100;
-        var contrast = $('#contrast').val() / 100;
-        var img = document.querySelector('#canvas');
-
-        fxCanvas.draw(texture)
-            .hueSaturation(-1, -1)
-            .unsharpMask(20, 2)
-            .brightnessContrast(brightness, contrast)
-            .update();
-
-        img.src = fxCanvas.toDataURL();
-
-        //update crop tool (it creates copies of <img> that we have to update manually)
-        $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
-    });
-        
-        
-(function () {
-//    var video = document.querySelector('video');
-
-    var pictureWidth = 640;
-    var pictureHeight = 360;
-
-    var fxCanvas = null;
-    var texture = null;
-
-    function checkRequirements() {
-        var deferred = new $.Deferred();
-
-        //Check if getUserMedia is available
-        if (!Modernizr.getusermedia) {
-            deferred.reject('Your browser doesn\'t support getUserMedia (according to Modernizr).');
-        }
-
-        //Check if WebGL is available
-        if (Modernizr.webgl) {
-            try {
-                //setup glfx.js
-                fxCanvas = fx.canvas();
-            } catch (e) {
-                deferred.reject('Sorry, glfx.js failed to initialize. WebGL issues?');
-            }
-        } else {
-            deferred.reject('Your browser doesn\'t support WebGL (according to Modernizr).');
-        }
-
-        deferred.resolve();
-
-        return deferred.promise();
-    }
-}
+//var fxCanvas = null;
+//    var texture = null;
+//        
+//        texture = fxCanvas.texture(canvas);
+//        fxCanvas.draw(texture)
+//            .hueSaturation(-1, -1)//grayscale
+//            .unsharpMask(20, 2)
+//            .brightnessContrast(0.2, 0.9)
+//            .update();
+//
+//        window.texture = texture;
+//        window.fxCanvas = fxCanvas;
+//
+//        $(img)
+//            //setup the crop utility
+//            .one('load', function () {
+//                if (!$(img).data().Jcrop) {
+//                    $(img).Jcrop({
+//                        onSelect: function () {
+//                            //Enable the 'done' button
+//                            $('#adjust').removeAttr('disabled');
+//                        }
+//                    });
+//                } else {
+//                    //update crop tool (it creates copies of <img> that we have to update manually)
+//                    $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
+//                }
+//            })
+//            //show output from glfx.js
+//            .attr('src', fxCanvas.toDataURL());
+//    
+//    
+//    $('#brightness, #contrast').on('change', function () {
+//        var brightness = $('#brightness').val() / 100;
+//        var contrast = $('#contrast').val() / 100;
+//        var img = document.querySelector('#canvas');
+//
+//        fxCanvas.draw(texture)
+//            .hueSaturation(-1, -1)
+//            .unsharpMask(20, 2)
+//            .brightnessContrast(brightness, contrast)
+//            .update();
+//
+//        img.src = fxCanvas.toDataURL();
+//
+//        //update crop tool (it creates copies of <img> that we have to update manually)
+//        $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
+//    });
+//        
+//        
+//(function () {
+////    var video = document.querySelector('video');
+//
+//    var pictureWidth = 640;
+//    var pictureHeight = 360;
+//
+//    var fxCanvas = null;
+//    var texture = null;
+//
+//    function checkRequirements() {
+//        var deferred = new $.Deferred();
+//
+//        //Check if getUserMedia is available
+//        if (!Modernizr.getusermedia) {
+//            deferred.reject('Your browser doesn\'t support getUserMedia (according to Modernizr).');
+//        }
+//
+//        //Check if WebGL is available
+//        if (Modernizr.webgl) {
+//            try {
+//                //setup glfx.js
+//                fxCanvas = fx.canvas();
+//            } catch (e) {
+//                deferred.reject('Sorry, glfx.js failed to initialize. WebGL issues?');
+//            }
+//        } else {
+//            deferred.reject('Your browser doesn\'t support WebGL (according to Modernizr).');
+//        }
+//
+//        deferred.resolve();
+//
+//        return deferred.promise();
+//    }
+//}
 </script>
     
      
