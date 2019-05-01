@@ -1,7 +1,7 @@
 body {
     background-color: aliceblue;
 }
-
+/*////////Start of css with changes, from https://github.com/antimatter15/ocrad.js/////////*/
 #ocr {
     margin-bottom: 50px;
     background: white;
@@ -25,6 +25,6 @@ body {
 }
 
 .nose:hover {
-	background-color: rgb(255, 222, 211);
+    background-color: rgb(255, 222, 211);
 }
-            
+/*////////End of css with changes, from https://github.com/antimatter15/ocrad.js/////////*/            
