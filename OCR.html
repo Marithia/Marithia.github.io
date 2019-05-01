@@ -337,7 +337,7 @@ document.getElementById('download').addEventListener('click', function() {
                     <div id="word" onclick="da_word()">&#8635;</div>
                 </div>
                  <div class="output nose" style="padding: 25px; cursor: pointer" onclick="open_picker()"> 
-                    You can also <strong>drag and drop</strong> an image from your computer <small>(JPEG, PNG, GIF, BMP, SVG, or NetPBM)</small> to feed into the text recognizer or <strong>choose a file</strong> by clicking anywhere on this box. 
+                    Drag and drop an image here or click this box to upload an image. 
                     
                 </div>
 <div class="output">
@@ -350,40 +350,46 @@ document.getElementById('download').addEventListener('click', function() {
             </div>
 
             <style>
+                body {
+                    background-color: aliceblue;
+                }
                 #demo {
-                box-shadow: 0px 0px 35px rgba(0,0,0,0.2);
                 margin-bottom: 50px;
                 background: white;
             }
             #demo {
-                box-shadow: 0px 0px 35px rgba(0,0,0,0.2);
                 margin-bottom: 50px;
                 background: white;
             }
             .output {
-                background: rgb(255, 245, 211);
+                background-color: ivory;
             }
             #output {
                 padding: 20px;
                 padding-bottom: 0;
                 text-align: center; 
                 min-height: 80px;
+                color: lemonchiffon;
+
                 -moz-transition: background-color 0.5s;
                 -webkit-transition: background-color 0.5s;
                 -o-transition: background-color 0.5s;
                 transition: background-color 0.5s;
+
             }
-            .buttons #clear { color: red; font-size: 400%; font-weight: bold; cursor: pointer;}
-			.buttons #word { color: blue; font-size: 300%; font-weight: bold; cursor: pointer; margin-left: -2px;}
+
 			.nose {
 				-moz-transition: background-color 0.5s;
 				-webkit-transition: background-color 0.5s;
 				-o-transition: background-color 0.5s;
 				transition: background-color 0.5s;
 			}
+
+
 			.nose:hover {
 				background-color: rgb(255, 222, 211);
 			}
+
             
             </style>
 
