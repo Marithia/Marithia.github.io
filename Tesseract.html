@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing Tesseract</title>
+</head>
+<body>
+  <h1>Tesseract Testing</h1>
+
+  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  	<script src="tesseract.js"></script>
+
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-sm-12">
+
+				<h1>Tesseract Testing</h1>
+				<img src="March.png" alt=" " width="300">
+
+				<hr>
+
+				<h6>Result</h6>  				
+
+				<div id="result"></div>
+
+  			</div>
+  			
+
+
+  		</div>
+  		
+
+
+  	</div>
+
+  	<script>
+  		
+  		let img = new Image()
+  		img.src = "March.png"
+  		img.onload = function(){
+
+  			console.log("loaded...", "$$$");
+
+  			Tesseract.recognize(img).progress((progress)=>{
+
+			if(progress.status === "recognize text"){
+			$('#progress').text(progress.progress*100 + "%");
+			}
+
+  			}).then((result)=>{
+
+  			console.log(result, "$$$");
+
+  			$('#result').text(result.text);
+
+  			})
+
+  		}
+
+  	</script>
+
+</body>
+</html>
