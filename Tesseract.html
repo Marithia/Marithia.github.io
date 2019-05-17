@@ -14,6 +14,52 @@
       <div class="row">
         <div class="col-sm-12">
 
+        	<video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Take a photo!</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+
+<!-- ////////Download button,from https://jsfiddle.net/wboykinm/fL0q2uce/////////  -->
+    <a id="download">Download Image</a>
+       
+    <script>
+
+////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
+var video = document.getElementById('video');
+
+//Camera
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+    });
+}
+    
+//Canvas stuff
+var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+        
+
+//Take a photo
+document.getElementById("snap").addEventListener("click", function() {
+	context.drawImage(video, 0, 0, 640, 480);
+});
+////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////         
+
+
+////////Start of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+        
+document.getElementById('download').addEventListener('click', function() {
+    downloadCanvas(this, 'canvas', 'image.png');
+}, false);
+////////End of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
+
+</script>
+
         <img src="March.png" alt=" " width="300">
 
         <hr>
