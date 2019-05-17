@@ -46,17 +46,17 @@
       img.src = "March.png"
       img.onload = function(){
 
-        console.log("loaded...", "$$$");
+        console.log("loaded...", "$$$$");
 
         Tesseract.recognize(img).progress((progress)=>{
 
-      if(progress.status === "recognize text"){
+      if(progress.status === "recognizing text"){
       $('#progress').text(progress.progress*100 + "%");
       }
 
         }).then((result)=>{
 
-        console.log(result, "$$$");
+        console.log(result, "$$$$");
 
         $('#result').text(result.text);
 
