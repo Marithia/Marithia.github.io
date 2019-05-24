@@ -21,7 +21,7 @@
 <!-- ////////Download button,from https://jsfiddle.net/wboykinm/fL0q2uce/////////  -->
     <a id="download">Download Image</a>
        
-    <script>
+<script>
 
 ////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
 var video = document.getElementById('video');
@@ -60,94 +60,81 @@ document.getElementById('download').addEventListener('click', function() {
 
 
 
+var c = document.getElementById('c'),
+                o = c.getContext('2d');
 
-// Testing script end
+            function reset_canvas(){
+                o.fillStyle = 'white'
+                o.fillRect(0, 0, c.width, c.height)
+                o.fillStyle = 'black'   
+            }
 
-    	
-    	function step2() {
-        var canvas = document.querySelector('#step2 canvas');
-        var img = document.querySelector('#step2 img');
 
-        //setup canvas
-        canvas.width = pictureWidth;
-        canvas.height = pictureHeight;
+            document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
+            document.body.ondragend = function(){ document.body.className = ''; return false }
+            document.body.onclick = function(){document.body.className = '';}
+            document.body.ondrop = function(e){
+                e.preventDefault();
+                document.body.className = '';
+                picked_file(e.dataTransfer.files[0]);
+                return false;
+            }
 
-        var ctx = canvas.getContext('2d');
+             function open_picker(){
+                 var e = document.createEvent("MouseEvents");    
+                 e.initEvent('click', true, true);
+                 document.getElementById('picker').dispatchEvent(e);
+             }
 
-        //draw picture from video on canvas
-        ctx.drawImage(video, 0, 0);
+            function picked_file(file){
+                if(!file) return;
+                 document.getElementById("output").className = 'processing'
 
-        //modify the picture using glfx.js filters
-        texture = fxCanvas.texture(canvas);
-        fxCanvas.draw(texture)
-            .hueSaturation(-1, -1)//grayscale
-            .unsharpMask(20, 2)
-            .brightnessContrast(0.2, 0.9)
-            .update();
+                var ext = file.name.split('.').slice(-1)[0];
+                var reader = new FileReader();
 
-        window.texture = texture;
-        window.fxCanvas = fxCanvas;
-
-        $(img)
-            //setup the crop utility
-            .one('load', function () {
-                if (!$(img).data().Jcrop) {
-                    $(img).Jcrop({
-                        onSelect: function () {
-                            //Enable the 'done' button
-                            $('#adjust').removeAttr('disabled');
+                if(file.type == "image/x-portable-bitmap" || ext == 'pbm' || ext == 'pgm' || ext == 'pnm' || ext == 'ppm'){
+                    reader.onload = function(){
+                        reset_canvas();
+                        document.getElementById("text").innerHTML = 'Reading..'
+                        o.font = '30px sans-serif'
+                        o.fillText('No previews for NetPBM format.', 50, 100);
+                        runOCR(new Uint8Array(reader.result), true);
+                    }
+                    reader.readAsArrayBuffer(file)
+                }else{
+                    reader.onload = function(){
+                        var img = new Image();
+                        img.src = reader.result;
+                        img.onerror = function(){
+                            reset_canvas();
+                            o.font = '30px sans-serif'
+                            o.fillText('Error: Invalid Image ' + file.name, 50, 100);
                         }
-                    });
-                } else {
-                    //update crop tool (it creates copies of <img> that we have to update manually)
-                    $('.jcrop-holder img').attr('src', fxCanvas.toDataURL());
+                        img.onload = function(){
+                            document.getElementById("text").innerHTML = 'Reading...'
+                            reset_canvas();
+                            var rat = Math.min(c.width / img.width, c.height / img.height);
+                            o.drawImage(img, 0, 0, img.width * rat, img.height * rat)
+                            var tmp = document.createElement('canvas')
+                            tmp.width = img.width;
+                            tmp.height = img.height;
+                            var ctx = tmp.getContext('2d')
+                            ctx.drawImage(img, 0, 0)
+                            var image_data = ctx.getImageData(0, 0, tmp.width, tmp.height);
+                            runOCR(image_data, true)
+                        }
+                        
+                    }
+                    reader.readAsDataURL(file)
                 }
-            })
-            //show output from glfx.js
-            .attr('src', fxCanvas.toDataURL());
-    }
+                
+            }
 
-    function step3() {
-        var canvas = document.querySelector('#step3 canvas');
-        var step2Image = document.querySelector('#step2 img');
-        var cropData = $(step2Image).data().Jcrop.tellSelect();
 
-        var scale = step2Image.width / $(step2Image).width();
+            
 
-        //draw cropped image on the canvas
-        canvas.width = cropData.w * scale;
-        canvas.height = cropData.h * scale;
-
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(
-            step2Image,
-            cropData.x * scale,
-            cropData.y * scale,
-            cropData.w * scale,
-            cropData.h * scale,
-            0,
-            0,
-            cropData.w * scale,
-            cropData.h * scale);
-
-        var spinner = $('.spinner');
-        spinner.show();
-        $('blockquote p').text('');
-        $('blockquote footer').text('');
-
-        // do the OCR!
-        Tesseract.recognize(ctx).then(function (result) {
-            var resultText = result.text ? result.text.trim() : '';
-
-            //show the result
-            spinner.hide();
-            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-            $('blockquote footer').text('(' + resultText.length + ' characters)');
-        });
-    }
-    	
-    </script>
-<!----------------- Testing script end ----------------->
+</script>
 
         <img src="March.png" alt=" " width="300">
 
