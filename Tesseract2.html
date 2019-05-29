@@ -37,7 +37,7 @@
     
 ////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
 var video = document.getElementById('video');
-var image = document.querySelector('img.photo');
+//var image = document.querySelector('img.photo');
 
 //Camera
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -49,15 +49,15 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
 //Canvas stuff
 var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
-var context = canvas.getContext('2d');
+//var context = canvas.getContext('2d');
 var video = document.getElementById('video');
         
 
 //Take a photo
 document.getElementById("snap").addEventListener("click", function() {
-    context.drawImage(video, 0, 0, 640, 480);
+    ctx.drawImage(video, 0, 0, 640, 480);
 
-    var imageDataURL = canvas.toDataURL('image/png');
+    //var imageDataURL = canvas.toDataURL('image/png');
 
     // image.setAttribute('src', imageDataURL);
 });
@@ -146,7 +146,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
-            Tesseract.recognize(image).then(function (result) {
+            Tesseract.recognize(ctx).then(function (result) {
             var resultText = result.text ? result.text.trim() : '';
 
             //show the result
