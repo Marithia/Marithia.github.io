@@ -15,22 +15,35 @@
         <div class="col-sm-12">
 
         	<video id="video" width="640" height="480" autoplay></video>
-<button id="snap">Take a photo!</button>
-<canvas id="canvas" width="640" height="480"></canvas>
+            <button id="snap">Take a photo!</button>
+            <canvas id="canvas" width="640" height="480"></canvas>
 
+<!-- Start of file upload, click here -->
 <input type="file" style="position:absolute; top: -100px" id="picker" onchange="picked_file(this.files[0])">
                 
     <canvas id='c' class="" width="400" height="300"></canvas>
     <div class="output nose" style="padding: 25px; cursor: pointer" onclick="open_picker()"> 
         Drag and drop an image here or click this box to upload an image. 
-        
+<!-- End of file upload, click here -->
 
 
 <!-- ////////Download button,from https://jsfiddle.net/wboykinm/fL0q2uce/////////  -->
     <a id="download">Download Image</a>
-       
-<script>
 
+
+<!---------------------------------------- Start of the camera script ---------------------------------------->
+<script>
+function step1(){
+
+var c = document.getElementById('c'),
+                o = c.getContext('2d');
+
+            function reset_canvas(){
+                o.fillStyle = 'white'
+                o.fillRect(0, 0, c.width, c.height)
+                o.fillStyle = 'black'   
+            }
+    
 ////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
 var video = document.getElementById('video');
 
@@ -41,7 +54,7 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.play();
     });
 }
-    
+
 //Canvas stuff
 var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 var context = canvas.getContext('2d');
@@ -50,10 +63,9 @@ var video = document.getElementById('video');
 
 //Take a photo
 document.getElementById("snap").addEventListener("click", function() {
-	context.drawImage(video, 0, 0, 640, 480);
+    context.drawImage(video, 0, 0, 640, 480);
 });
-////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////         
-
+////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
 
 ////////Start of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
 function downloadCanvas(link, canvasId, filename) {
@@ -67,18 +79,17 @@ document.getElementById('download').addEventListener('click', function() {
 ////////End of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
 
 
-
-var c = document.getElementById('c'),
-                o = c.getContext('2d');
-
-            function reset_canvas(){
-                o.fillStyle = 'white'
-                o.fillRect(0, 0, c.width, c.height)
-                o.fillStyle = 'black'   
-            }
+}
+</script>
+<!---------------------------------------- End of the camera script ---------------------------------------->
 
 
-            document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
+<!---------------------------------------- Start of picker script ---------------------------------------->
+<script>
+
+function step2(){
+
+document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
             document.body.ondragend = function(){ document.body.className = ''; return false }
             document.body.onclick = function(){document.body.className = '';}
             document.body.ondrop = function(e){
@@ -138,7 +149,12 @@ var c = document.getElementById('c'),
                 }
                 
             }
+}
+</script>
+<!---------------------------------------- End of picker script ---------------------------------------->
 
+
+<script>   
 
 
 
@@ -171,6 +187,10 @@ var c = document.getElementById('c'),
     </script> -->
 
     <script>
+    function step2(){
+
+        var canvas = document.querySelector('#step1 canvas');
+        var img = document.querySelector('#step1 img');
       
       let img = new Image()
       img.src = "March.png"
@@ -193,7 +213,7 @@ var c = document.getElementById('c'),
         })
 
       }
-
+}
     </script>
 
 
