@@ -186,7 +186,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
             var resultText = result.text ? result.text.trim() : '';
 
             //show the result
-            spinner.hide();
+            
             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
             $('blockquote footer').text('(' + resultText.length + ' characters)');
         });
