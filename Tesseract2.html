@@ -171,7 +171,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
 
         console.log("loaded...", "$$$$");
 
-        Tesseract.recognize(getImageData).progress((progress)=>{
+        Tesseract.recognize(image.png).progress((progress)=>{
 
       if(progress.status === "recognizing text"){
       $('#progress').text(progress.progress*100 + "%");
