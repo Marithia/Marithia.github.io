@@ -156,7 +156,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
-Tesseract.recognize(image).then(function (result) {
+Tesseract.recognize(img).then(function (result) {
             var resultText = result.text ? result.text.trim() : '';
 
             //show the result
@@ -164,6 +164,28 @@ Tesseract.recognize(image).then(function (result) {
             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
             $('blockquote footer').text('(' + resultText.length + ' characters)');
         });
+
+      // let img = new Image()
+      // img.src = "March.png"
+      // img.onload = function(){
+
+      //   console.log("loaded...", "$$$$");
+
+      //   Tesseract.recognize(img).progress((progress)=>{
+
+      // if(progress.status === "recognizing text"){
+      // $('#progress').text(progress.progress*100 + "%");
+      // }
+
+      //   }).then((result)=>{
+
+      //   console.log(result, "$$$$");
+
+      //   $('#result').text(result.text);
+
+      //   })
+
+      // }
 
 </script> -->
 <!---------------------------------------- End of picker script ---------------------------------------->
