@@ -34,15 +34,6 @@
 <!---------------------------------------- Start of the camera script ---------------------------------------->
 <script>
 function step1(){
-
-var c = document.getElementById('c'),
-                o = c.getContext('2d');
-
-            function reset_canvas(){
-                o.fillStyle = 'white'
-                o.fillRect(0, 0, c.width, c.height)
-                o.fillStyle = 'black'   
-            }
     
 ////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
 var video = document.getElementById('video');
@@ -78,7 +69,14 @@ document.getElementById('download').addEventListener('click', function() {
 }, false);
 ////////End of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
 
+var c = document.getElementById('c'),
+                o = c.getContext('2d');
 
+            function reset_canvas(){
+                o.fillStyle = 'white'
+                o.fillRect(0, 0, c.width, c.height)
+                o.fillStyle = 'black'   
+            }
 }
 </script>
 <!---------------------------------------- End of the camera script ---------------------------------------->
