@@ -55,6 +55,10 @@ var video = document.getElementById('video');
 //Take a photo
 document.getElementById("snap").addEventListener("click", function() {
     context.drawImage(video, 0, 0, 640, 480);
+
+    var imageDataURL = canvas.toDataURL('image/png');
+
+    image.setAttribute('src', imageDataURL);
 });
 ////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
 
