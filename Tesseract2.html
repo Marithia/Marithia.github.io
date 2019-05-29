@@ -146,6 +146,15 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
+            Tesseract.recognize(context).then(function (result) {
+            var resultText = result.text ? result.text.trim() : '';
+
+            //show the result
+            
+            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+            $('blockquote footer').text('(' + resultText.length + ' characters)');
+        });
+
 </script> -->
 <!---------------------------------------- End of picker script ---------------------------------------->
 
@@ -182,14 +191,14 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
 
     <script>
       
-     Tesseract.recognize(ctx).then(function (result) {
-            var resultText = result.text ? result.text.trim() : '';
+     // Tesseract.recognize(ctx).then(function (result) {
+     //        var resultText = result.text ? result.text.trim() : '';
 
-            //show the result
+     //        //show the result
             
-            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-            $('blockquote footer').text('(' + resultText.length + ' characters)');
-        });
+     //        $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+     //        $('blockquote footer').text('(' + resultText.length + ' characters)');
+     //    });
 
     </script>
 
