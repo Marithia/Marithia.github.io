@@ -156,7 +156,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
-Tesseract.recognize(img).then(function (result) {
+Tesseract.recognize(canvas).then(function (result) {
             var resultText = result.text ? result.text.trim() : '';
 
             //show the result
