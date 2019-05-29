@@ -57,9 +57,9 @@ var video = document.getElementById('video');
 document.getElementById("snap").addEventListener("click", function() {
     ctx.drawImage(video, 0, 0, 640, 480);
 
-    //var imageDataURL = canvas.toDataURL('image/png');
+    var imageDataURL = canvas.toDataURL('image/png');
 
-    // image.setAttribute('src', imageDataURL);
+     image.setAttribute('src', imageDataURL);
 });
 ////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
 
@@ -146,14 +146,27 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
-            Tesseract.recognize(ctx).then(function (result) {
-            var resultText = result.text ? result.text.trim() : '';
+      let img = new Image()
+      img.src = "imageDataURL"
+      img.onload = function(){
 
-            //show the result
-            
-            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-            $('blockquote footer').text('(' + resultText.length + ' characters)');
-        });
+        console.log("loaded...", "$$$$");
+
+        Tesseract.recognize(img).progress((progress)=>{
+
+      if(progress.status === "recognizing text"){
+      $('#progress').text(progress.progress*100 + "%");
+      }
+
+        }).then((result)=>{
+
+        console.log(result, "$$$$");
+
+        $('#result').text(result.text);
+
+        })
+
+      }
 
 </script> -->
 <!---------------------------------------- End of picker script ---------------------------------------->
