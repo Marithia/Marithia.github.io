@@ -156,36 +156,36 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
-Tesseract.recognize(canvas).then(function (result) {
-            var resultText = result.text ? result.text.trim() : '';
+// Tesseract.recognize(canvas).then(function (result) {
+//             var resultText = result.text ? result.text.trim() : '';
 
-            //show the result
+//             //show the result
             
-            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-            $('blockquote footer').text('(' + resultText.length + ' characters)');
-        });
+//             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+//             $('blockquote footer').text('(' + resultText.length + ' characters)');
+//         });
 
-      // let img = new Image()
-      // img.src = "March.png"
-      // img.onload = function(){
+      //let img = new Image()
+      //img.src = "March.png"
+      //img.onload = function(){
 
-      //   console.log("loaded...", "$$$$");
+        console.log("loaded...", "$$$$");
 
-      //   Tesseract.recognize(img).progress((progress)=>{
+        Tesseract.recognize(getImageData).progress((progress)=>{
 
-      // if(progress.status === "recognizing text"){
-      // $('#progress').text(progress.progress*100 + "%");
-      // }
+      if(progress.status === "recognizing text"){
+      $('#progress').text(progress.progress*100 + "%");
+      }
 
-      //   }).then((result)=>{
+        }).then((result)=>{
 
-      //   console.log(result, "$$$$");
+        console.log(result, "$$$$");
 
-      //   $('#result').text(result.text);
+        $('#result').text(result.text);
 
-      //   })
+        })
 
-      // }
+      //}
 
 </script> -->
 <!---------------------------------------- End of picker script ---------------------------------------->
