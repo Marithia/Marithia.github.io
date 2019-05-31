@@ -52,7 +52,7 @@ var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 //var context = canvas.getContext('2d');
 var video = document.getElementById('video');
 
-var img        
+// var img        
 
 //Take a photo
 document.getElementById("snap").addEventListener("click", function() {
@@ -64,16 +64,15 @@ document.getElementById("snap").addEventListener("click", function() {
 
     var img = convertCanvasToImage();
 
+
+});
+
 function convertCanvasToImage() 
 {
   var image = new Image();
   image.src = canvas.toDataURL("image/png");
   return image;
 }
-
-
-
-});
 ////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
 
 ////////Start of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
