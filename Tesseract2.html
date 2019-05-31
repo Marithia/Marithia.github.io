@@ -167,13 +167,13 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
 //             $('blockquote footer').text('(' + resultText.length + ' characters)');
 //         });
 
-      let img = new Image()
-      img.src = "image.png"
-      img.onload = function(){
+      // let img = new Image()
+      // img.src = "image.png"
+      // img.onload = function(){
 
         console.log("loaded...", "$$$$");
 
-        Tesseract.recognize(image).progress((progress)=>{
+        Tesseract.recognize(img).progress((progress)=>{
 
       if(progress.status === "recognizing text"){
       $('#progress').text(progress.progress*100 + "%");
@@ -186,7 +186,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
         $('#result').text(result.text);
 
         })
-      }
+      //}
 
     
 
