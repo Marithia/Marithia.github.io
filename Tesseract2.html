@@ -63,12 +63,12 @@ document.getElementById("snap").addEventListener("click", function() {
 
 //     var img = convertCanvasToImage();
 
-// function convertCanvasToImage() 
-// {
-//   var image = new Image();
-//   image.src = canvas.toDataURL("image/png");
-//   return image;
-// }
+function convertCanvasToImage() 
+{
+  var image = new Image();
+  image.src = canvas.toDataURL("image/png");
+  return image;
+}
 
 });
 ////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
@@ -171,7 +171,7 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
 
         console.log("loaded...", "$$$$");
 
-        Tesseract.recognize(image.png).progress((progress)=>{
+        Tesseract.recognize(image).progress((progress)=>{
 
       if(progress.status === "recognizing text"){
       $('#progress').text(progress.progress*100 + "%");
