@@ -158,35 +158,35 @@ document.body.ondragover = function(){ document.body.className = 'dragging'; ret
                 
             }
 
-// Tesseract.recognize().then(function (result) {
-//             var resultText = result.text ? result.text.trim() : '';
+Tesseract.recognize(url).then(function (result) {
+            var resultText = result.text ? result.text.trim() : '';
 
-//             //show the result
+            //show the result
             
-//             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-//             $('blockquote footer').text('(' + resultText.length + ' characters)');
-//         });
+            $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
+            $('blockquote footer').text('(' + resultText.length + ' characters)');
+        });
 
-      let img = new Image()
-      img.src = "image_data"
-      img.onload = function(){
+      // let img = new Image()
+      // img.src = "image_data"
+      // img.onload = function(){
 
-        console.log("loaded...", "$$$$");
+      //   console.log("loaded...", "$$$$");
 
-        Tesseract.recognize().progress((progress)=>{
+      //   Tesseract.recognize(url).progress((progress)=>{
 
-      if(progress.status === "recognizing text"){
-      $('#progress').text(progress.progress*100 + "%");
-      }
+      // if(progress.status === "recognizing text"){
+      // $('#progress').text(progress.progress*100 + "%");
+      // }
 
-        }).then((result)=>{
+      //   }).then((result)=>{
 
-        console.log(result, "$$$$");
+      //   console.log(result, "$$$$");
 
-        $('#result').text(result.text);
+      //   $('#result').text(result.text);
 
-        })
-      }
+      //   })
+      // }
 
     
 
