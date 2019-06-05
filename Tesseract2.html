@@ -146,6 +146,9 @@ document.getElementById("snap").addEventListener("click", function() {
       $('#progress').text(progress.progress*100 + "%");
       }
 
+      console.log(img.width);
+      console.log(img.height);
+
     }).then((result)=>{
 
       console.log(result, "$$$$");
