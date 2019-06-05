@@ -244,7 +244,31 @@ document.getElementById('download').addEventListener('click', function() {
       // img.src = "image.png"
       // img.onload = function(){
 
-        console.log("loaded...", "$$$$");
+      //   console.log("loaded...", "$$$$");
+
+      //   Tesseract.recognize().progress((progress)=>{
+
+      // if(progress.status === "recognizing text"){
+      // $('#progress').text(progress.progress*100 + "%");
+      // }
+
+      //   }).then((result)=>{
+
+      //   console.log(result, "$$$$");
+
+      //   $('#result').text(result.text);
+
+      //   })
+      //}
+
+    
+
+</script>
+<!---------------------------------------- End of picker script ---------------------------------------->
+
+
+<script>   
+console.log("loaded...", "$$$$");
 
         Tesseract.recognize(img).progress((progress)=>{
 
@@ -259,16 +283,6 @@ document.getElementById('download').addEventListener('click', function() {
         $('#result').text(result.text);
 
         })
-      //}
-
-    
-
-</script>
-<!---------------------------------------- End of picker script ---------------------------------------->
-
-
-<script>   
-
 </script>
 
         <!-- <img src="March.png" alt=" " width="300"> -->
