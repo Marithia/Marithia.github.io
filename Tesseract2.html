@@ -18,10 +18,13 @@
             <button id="snap">Take a photo!</button>
             <canvas id="canvas" width="640" height="480"></canvas>
 
+<!-- ////////Download button,from https://jsfiddle.net/wboykinm/fL0q2uce/////////  -->
+    <a id="download">Download Image</a>
+
 <!-- Start of file upload, click here -->
 <input type="file" style="position:absolute; top: -100px" id="picker" onchange="picked_file(this.files[0])">
                 
-    <canvas id='c' class="" width="40" height="30" background-color="blue"></canvas>
+    <canvas id='c' class="" width="400" height="300"></canvas>
     <div class="output nose" style="padding: 25px; cursor: pointer" onclick="open_picker()"> 
         Drag and drop an image here or click this box to upload an image. 
 <!-- End of file upload, click here -->
@@ -29,8 +32,7 @@
 <br>
 <br>
 <br>
-<!-- ////////Download button,from https://jsfiddle.net/wboykinm/fL0q2uce/////////  -->
-    <a id="download">Download Image</a>
+
 
 
 <!---------------------------------------- Start of the camera script ---------------------------------------->
