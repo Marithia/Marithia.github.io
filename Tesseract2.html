@@ -161,10 +161,19 @@ document.getElementById("snap").addEventListener("click", function() {
 
 });
 
+function convertImageToCanvas(image) {
+	var canvas = document.createElement("canvas");
+	canvas.width = image.width;
+	canvas.height = image.height;
+	canvas.getContext("2d").drawImage(image, 0, 0);
+
+	return canvas;
+}
+
 function convertCanvasToImage() 
 {
   var image = new Image();
-  image.src = ctx.getImageData(0, 0, 640, 480).toDataURL("image/png");
+  image.src = canvas.toDataURL("image/png");
   return image;
 }
 ////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
