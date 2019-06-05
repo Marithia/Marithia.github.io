@@ -110,6 +110,7 @@
     
 ////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
 var video = document.getElementById('video');
+var image;
 //var image = document.querySelector('img.photo');
 
 //Camera
@@ -142,7 +143,7 @@ document.getElementById("snap").addEventListener("click", function() {
 
 function convertCanvasToImage() 
 {
-  var image = new Image();
+  image = new Image();
   image.src = canvas.toDataURL("image/png");
   return image;
 }
