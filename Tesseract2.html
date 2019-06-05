@@ -164,7 +164,7 @@ document.getElementById("snap").addEventListener("click", function() {
 function convertCanvasToImage() 
 {
   var image = new Image();
-  image.src = canvas.toDataURL("image/png");
+  image.src = ctx.toDataURL("image/png");
   return image;
 }
 ////////End of of camera script, gotten from https://davidwalsh.name/browser-camera////////
