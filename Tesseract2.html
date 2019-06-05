@@ -138,6 +138,22 @@ document.getElementById("snap").addEventListener("click", function() {
 
     var img = convertCanvasToImage();
 
+    console.log("loaded...", "$$$$");
+
+    Tesseract.recognize(img).progress((progress)=>{
+
+      if(progress.status === "recognizing text"){
+      $('#progress').text(progress.progress*100 + "%");
+      }
+
+    }).then((result)=>{
+
+      console.log(result, "$$$$");
+
+      $('#result').text(result.text);
+
+    })
+
 
 });
 
@@ -159,21 +175,7 @@ document.getElementById('download').addEventListener('click', function() {
     downloadCanvas(this, 'canvas', 'image.png');
 }, false);
 
-console.log("loaded...", "$$$$");
 
-        Tesseract.recognize(img).progress((progress)=>{
-
-      if(progress.status === "recognizing text"){
-      $('#progress').text(progress.progress*100 + "%");
-      }
-
-        }).then((result)=>{
-
-        console.log(result, "$$$$");
-
-        $('#result').text(result.text);
-
-        })
 ////////End of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
 
 // var c = document.getElementById('c'),
