@@ -138,6 +138,8 @@ document.getElementById("snap").addEventListener("click", function() {
 
     var img = convertCanvasToImage();
 
+
+    img.onload = function{
     console.log("loaded...", "$$$$");
 
 	console.log(img.width);
@@ -157,6 +159,7 @@ document.getElementById("snap").addEventListener("click", function() {
       $('#result').text(result.text);
 
     })
+	}
 
 
 });
