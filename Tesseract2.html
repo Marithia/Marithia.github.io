@@ -140,14 +140,15 @@ document.getElementById("snap").addEventListener("click", function() {
 
     console.log("loaded...", "$$$$");
 
+	console.log(img.width);
+    console.log(img.height);
     Tesseract.recognize(img).progress((progress)=>{
 
       if(progress.status === "recognizing text"){
       $('#progress').text(progress.progress*100 + "%");
       }
 
-      console.log(img.width);
-      console.log(img.height);
+
 
     }).then((result)=>{
 
