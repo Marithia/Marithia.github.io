@@ -14,12 +14,6 @@
       <div class="row">
         <div class="col-sm-12">
 
-<div class="video-options">
-    <select name="" id="" class="custom-select">
-        <option value="">Select camera</option>
-    </select>
-</div>
-
         	<video id="video" width="640" height="480" autoplay></video>
             <button id="snap">Take a photo!</button>
             <canvas id="canvas" width="640" height="480"></canvas>
@@ -123,17 +117,12 @@ var video = document.getElementById('video');
 //   flipBtn.disabled = false;
 // }
 
-var constraints = {
-  facingMode: { exact: "environment" }
-};
-
 
 //var image = document.querySelector('img.photo');
 
 //Camera
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: 'environment'})
-    navigator.mediaDevices.getUserMedia({ video: true}).then(function(stream) {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
         video.srcObject = stream;
         video.play();
     });
