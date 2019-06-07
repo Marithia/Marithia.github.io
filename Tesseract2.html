@@ -130,13 +130,16 @@ var video = document.getElementById('video');
 
 //Camera
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true, facingMode: 'environment' }).then(function(stream) {
+    navigator.mediaDevices.getUserMedia({ video: true}).then(function(stream) {
         video.srcObject = stream;
         video.play();
     });
 }
 
 const cameraOptions = document.querySelector('.video-options>select');
+const contraints = {
+  facingMode: "environment"
+}
 
 //Canvas stuff
 var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
