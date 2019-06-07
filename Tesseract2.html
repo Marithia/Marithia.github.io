@@ -123,14 +123,16 @@ var video = document.getElementById('video');
 //   flipBtn.disabled = false;
 // }
 
-
+var constraints = {
+  facingMode: { exact: "environment" }
+};
 
 
 //var image = document.querySelector('img.photo');
 
 //Camera
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true, facingMode: { exact: "environment"}}).then(function(stream) {
+    navigator.mediaDevices.getUserMedia({ video: true}).then(function(stream) {
         video.srcObject = stream;
         video.play();
     });
