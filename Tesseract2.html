@@ -14,6 +14,12 @@
       <div class="row">
         <div class="col-sm-12">
 
+<div class="video-options">
+    <select name="" id="" class="custom-select">
+        <option value="">Select camera</option>
+    </select>
+</div>
+
         	<video id="video" width="640" height="480" autoplay></video>
             <button id="snap">Take a photo!</button>
             <canvas id="canvas" width="640" height="480"></canvas>
@@ -111,15 +117,26 @@
 ////////Beginning of camera script, gotten from https://davidwalsh.name/browser-camera//////// 
 var video = document.getElementById('video');
 
+
+var supports = navigator.mediaDevices.getSupportedConstraints();
+if( supports['facingMode'] === true ) {
+  flipBtn.disabled = false;
+}
+
+
+
+
 //var image = document.querySelector('img.photo');
 
 //Camera
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+    navigator.mediaDevices.getUserMedia({ video: true, video: 'enviroment' }).then(function(stream) {
         video.srcObject = stream;
         video.play();
     });
 }
+
+const cameraOptions = document.querySelector('.video-options>select');
 
 //Canvas stuff
 var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
