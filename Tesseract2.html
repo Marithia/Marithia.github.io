@@ -148,10 +148,10 @@ document.getElementById("snap").addEventListener("click", function() {
 
 
     img.onload = function(){
-    document.write("loaded...", "$$$$");
+    document.("loaded...", "$$$$");
 
-	document.write(img.width);
-    document.write(img.height);
+	(img.width);
+    (img.height);
     Tesseract.recognize(img).progress((progress)=>{
 
       if(progress.status === "recognizing text"){
@@ -162,7 +162,7 @@ document.getElementById("snap").addEventListener("click", function() {
 
     }).then((result)=>{
 
-      document.write(result, "$$$$");
+      (result, "$$$$");
 
       $('#result').text(result.text);
 
