@@ -148,10 +148,10 @@ document.getElementById("snap").addEventListener("click", function() {
 
 
     img.onload = function(){
-    console.log("loaded...", "$$$$");
+    document.write("loaded...", "$$$$");
 
-	console.log(img.width);
-    console.log(img.height);
+	document.write(img.width);
+    document.write(img.height);
     Tesseract.recognize(img).progress((progress)=>{
 
       if(progress.status === "recognizing text"){
@@ -162,13 +162,12 @@ document.getElementById("snap").addEventListener("click", function() {
 
     }).then((result)=>{
 
-      console.log(result, "$$$$");
+      document.write(result, "$$$$");
 
-      $('#result').text(result.document.getElementById("myText").value = "#result");
+      $('#result').text(result.text);
 
     })
 	}
-
 
 });
 
