@@ -309,6 +309,20 @@ document.getElementById('download').addEventListener('click', function() {
 </script>
 <!---------------------------------------- End of picker script ---------------------------------------->
 
+<!---------------------------------------- Start of database ---------------------------------------->
+        
+<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+        
+var db = new Dexie("MyPantry");
+    db.version(1).stores({food: '++id,name,date'});
+        
+async function main () {
+        
+    var id = await db.food.add({name: })
+        
+}
+        
+<!---------------------------------------- End of database ---------------------------------------->        
 
 <!-- <script>   
 console.log("loaded...", "$$$$");
@@ -333,7 +347,7 @@ console.log("loaded...", "$$$$");
         <hr>
 
         <span id="progress"></span>
-        <h6>Result</h6>         
+        <h6>Result <input type="text" id="myText" value=""></h6>         
 
         <div id="result"></div>
 
@@ -365,7 +379,7 @@ console.log("loaded...", "$$$$");
      //        $('blockquote footer').text('(' + resultText.length + ' characters)');
      //    });
 
-    </script>
+        </script>
 
 
 </body>
