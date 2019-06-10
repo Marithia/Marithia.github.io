@@ -394,7 +394,7 @@ function handleView() {
         var td1 = "<td>" + result.title + "</td>"
         var td2 = "<td>" + result.date + "</td>"
         var td3 = "<td><a onclick=\"handleRemove(" + result.id + ")\">Remove</a></td>";
-        elmTable.innerHTML - elmTable.innerHTML + tr + tr1 + tr2 + tr3;
+        elmTable.innerHTML = elmTable.innerHTML + tr + tr1 + tr2 + tr3;
     })
 }
 
