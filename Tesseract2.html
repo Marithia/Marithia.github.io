@@ -369,6 +369,7 @@ elmDeldb.addEventListener('click', handleDeleteDB, false);
 
 var elmTitle = document.getElementById('title');
 var elmArtist = document.getElementById('date');
+var elmTable = document.getElementById('display');
 
 var elmMessages = document.getElementById('messages');
 function xalert(message) {elmMessages.innerHTML += message + "<br>";}
@@ -376,7 +377,7 @@ function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 // Delete Database
 function handleDeleteDB(){
   db.delete();
-  handleView();fadd2
+  handleView();
   xalert("You'll need to refresh");
 }
 
