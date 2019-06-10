@@ -6,7 +6,55 @@
 
 <body>
 
+
+
 <script>
+
+var elmAdd = document.getElementById('add2DB');
+var elmView = document.getElementById('viewDB');
+var elmDeldb = document.getElementById('delDB');
+
+var elmTitle = document.getElementById('title');
+var elmArtist = document.getElementById('date');
+
+var elmMessages = document.getElementById('messages');
+function xalert(message) {elmMessages.innerHTML += message + "<br>";}
+
+// Delete Database
+function handleDeleteDB(){
+  db.delete();
+  handleView();
+  xalert("You'll need to refresh");
+}
+
+var db = new Dexie("visDB");
+db.version(1).stores({id3: "++id, title, date"})
+db.open().catch(function(e) {xalert("Open failed: " e);});
+
+function handleAdd(){
+    var title = elmTitle.value;
+    var date = elmDate.value;
+    db.id3.add({title: title, date: date});
+    handleView();
+}
+
+function handleView() {
+    elmTable.innerHTML = "";
+    db.id3.each(function(result) {
+        var tr = "<tr>";
+        var td1 = "<td>" + result.title + "</td>"
+        var td2 = "<td>" + result.date + "</td>"
+        var td3 = "<td><a onclick=\"handleRemove(" + result.id + ")\">Remove</a></td>";
+        elmTable.innerHTML - elmTable.innerHTML + tr + tr1 + tr2 + tr3;
+    })
+}
+
+function handleRemove(i){
+  db.id3.where("id").equals(i).delete();
+  handleView();
+}
+
+handleView();
 
 </script>
 
