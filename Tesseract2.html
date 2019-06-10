@@ -377,7 +377,7 @@ function handleDeleteDB(){
 }
 
 var db = new Dexie("visDB");
-db.version(1).stores({id3: "++id, title, date"})
+db.version(1).stores({id3: "++id, title, date"});
 db.open().catch(function(e) {xalert("Open failed: " e);});
 
 function handleAdd(){
