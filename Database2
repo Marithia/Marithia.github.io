@@ -10,7 +10,7 @@
 
 <script>
 
-var elmAdd = document.getElementById('add2DB');
+var elmAdd = document.getElementById('add2db');
 var elmView = document.getElementById('viewDB');
 var elmDeldb = document.getElementById('delDB');
 
@@ -23,7 +23,7 @@ function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 // Delete Database
 function handleDeleteDB(){
   db.delete();
-  handleView();
+  handleView();fadd2
   xalert("You'll need to refresh");
 }
 
