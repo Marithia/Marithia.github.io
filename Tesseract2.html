@@ -130,6 +130,14 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     });
 }
 
+const constraints = {
+    "video": {
+        "facingMode":
+        {"ideal": "environment"}
+    }    
+};
+    
+const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
 //Canvas stuff
 var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
