@@ -363,7 +363,7 @@ console.log("loaded...", "$$$$");
 
         <label for="result">Date: </label><div id="result" contenteditable="true"></div>
 <!--        <div><input id="result" type="text" class="result"></div>-->
-        <label for="result">Result: </label>
+        <label for="title">Title: </label>
         <input type="text" name="title">
 
         <button id="add2db">Add</button>
@@ -387,8 +387,8 @@ elmAdd.addEventListener('click', handleAdd, false);
 elmView.addEventListener('click', handleView, false);
 //elmDeldb.addEventListener('click', handleDeleteDB, false);
 
-var elmResult = document.getElementById('result');
-var elmDate = document.getElementById('date');
+var elmTitle = document.getElementById('title');
+var elmresult = document.getElementById('result');
 var elmTable = document.getElementById('display');
 
 var elmMessages = document.getElementById('messages');
@@ -402,27 +402,27 @@ function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 //}
 
 var db = new Dexie("visDB");
-db.version(1).stores({id3: "++id, result, date"});
+db.version(1).stores({id3: "++id, title, result"});
 db.open().catch(function(e) {xalert("Open failed: " + e);});
 
 function handleFileSelection(e) {
 ID3.loadTags(url, function() {
     var tags = ID3.getAllTags(url);
 
-if (tags.result) {
-    elmResult.value = tags.result;
+if (tags.title) {
+    elmTitle.value = tags.title;
 }else{
-     elmResult.value = "";
+     elmTitle.value = "";
 }
-if (tags.date) {
-    elmDate.value = tags.date;
+if (tags.result) {
+    elmresult.value = tags.result;
 }else{
     elmDate.value = "";
 }
 }, 
 {
 dataReader: ID3.FileAPIReader(fileStore),
-tags: ["date", "result"]
+tags: ["result", "title"]
 }
 );
 
@@ -430,9 +430,9 @@ tags: ["date", "result"]
 }
     
 function handleAdd(){
-    var result = elmResult.value;
-    var date = elmDate.value;
-    db.id3.add({result: result, date: date});
+    var title = elmTitle.value;
+    var result = elmresult.value;
+    db.id3.add({title: title, result: result});
     handleView();
 }
 
@@ -440,8 +440,8 @@ function handleView() {
     elmTable.innerHTML = "";
     db.id3.each(function(results) {
         var tr = "<tr>";
-        var td1 = "<td>" + results.result + "</td>";
-        var td2 = "<td>" + results.date + "</td>";
+        var td1 = "<td>" + results.title + "</td>";
+        var td2 = "<td>" + results.result + "</td>";
         var td3 = "<td><a onclick=\"handleRemove(" + results.id + ")\">Remove</a></td>";
         var tr4 = "</tr></td>";
         elmTable.innerHTML = elmTable.innerHTML + tr + tr1 + tr2 + tr3 + tr4;
