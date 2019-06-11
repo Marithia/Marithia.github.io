@@ -393,6 +393,7 @@ elmView.addEventListener('click', handleView, false);
 
 var elmTitle = document.getElementById('title');
 var elmresulta = document.getElementById('resulta');
+var elmresult = document.getElementById('result');
 var elmTable = document.getElementById('display');
 
 var elmMessages = document.getElementById('messages');
@@ -406,7 +407,7 @@ function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 //}
 
 var db = new Dexie("visDB");
-db.version(1).stores({id3: "++id, title, resulta"});
+db.version(1).stores({id3: "++id, title, resulta, result"});
 db.open().catch(function(e) {xalert("Open failed: " + e);});
 
 function handleFileSelection(e) {
@@ -423,10 +424,15 @@ if (tags.resulta !== undefined) {
 }else{
     elmresulta.value = "";
 }
+if (tags.result !== undefined) {
+    elmresult.value = tags.result;
+}else{
+    elmresult.value = "";
+}
 }, 
 {
 dataReader: ID3.FileAPIReader(fileStore),
-tags: ["resulta", "title"]
+tags: ["resulta", "result", "title"]
 }
 );
 
@@ -446,9 +452,10 @@ function handleView() {
         var tr = "<tr>";
         var td1 = "<td>" + results.title + "</td>";
         var td2 = "<td>" + results.resulta + "</td>";
+        var td5 = "<td>" + results.result + "</td>";
         var td3 = "<td><a onclick=\"handleRemove(" + results.id + ")\">Remove</a></td>";
         var tr4 = "</tr></td>";
-        elmTable.innerHTML = elmTable.innerHTML + tr + td1 + td2 + td3 + tr4;
+        elmTable.innerHTML = elmTable.innerHTML + tr + td1 + td2 + td3 + tr4 + td5;
     })
 }
 
