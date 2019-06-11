@@ -356,29 +356,6 @@ console.log("loaded...", "$$$$");
  -->
         <!-- <img src="March.png" alt=" " width="300"> -->
 
-        <hr>
-
-        <span id="progress"></span>
-        <h6>Result</h6>         
-<label id="fileSelector"></label>
-            <table id="display" border="1"></table>
-        <label for="result">Date: </label>
-<!--        <script>result.getElementById("result").innerHTML = "";</script>-->
-        <div id="result"><input type="text" id="resulta"></div>
-        
-<!--        <div><input id="result" type="text" class="result"><div>-->
-        <label for="title">Title: </label>
-        <input type="text" id="title">
-
-        <button id="add2db">Add</button>
-
-        <button id="viewDB">Refresh Datbase</button>
-        <button id="delDB">Delete Datbase</button>
-        
-        
-
-            
-            
 <script>
 
 var elmFile = document.getElementById('fileSelector');
@@ -393,7 +370,6 @@ elmView.addEventListener('click', handleView, false);
 
 var elmTitle = document.getElementById('title');
 var elmresulta = document.getElementById('resulta');
-var elmresult = document.getElementById('result');
 var elmTable = document.getElementById('display');
 
 var elmMessages = document.getElementById('messages');
@@ -407,7 +383,7 @@ function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 //}
 
 var db = new Dexie("visDB");
-db.version(1).stores({id3: "++id, title, resulta, result"});
+db.version(1).stores({id3: "++id, title, resulta"});
 db.open().catch(function(e) {xalert("Open failed: " + e);});
 
 function handleFileSelection(e) {
@@ -424,15 +400,10 @@ if (tags.resulta !== undefined) {
 }else{
     elmresulta.value = "";
 }
-if (tags.result !== undefined) {
-    elmresult.value = tags.result;
-}else{
-    elmresult.value = "";
-}
 }, 
 {
 dataReader: ID3.FileAPIReader(fileStore),
-tags: ["resulta", "result", "title"]
+tags: ["resulta", "title"]
 }
 );
 
@@ -452,10 +423,9 @@ function handleView() {
         var tr = "<tr>";
         var td1 = "<td>" + results.title + "</td>";
         var td2 = "<td>" + results.resulta + "</td>";
-        var td5 = "<td>" + results.result + "</td>";
         var td3 = "<td><a onclick=\"handleRemove(" + results.id + ")\">Remove</a></td>";
         var tr4 = "</tr></td>";
-        elmTable.innerHTML = elmTable.innerHTML + tr + td1 + td2 + td3 + tr4 + td5;
+        elmTable.innerHTML = elmTable.innerHTML + tr + td1 + td2 + td3 + tr4;
     })
 }
 
@@ -467,6 +437,31 @@ function handleRemove(i){
 handleView();
 
 </script>
+            
+        <hr>
+
+        <span id="progress"></span>
+        <h6>Result</h6>         
+<label id="fileSelector"></label>
+            <table id="display" border="1"></table>
+        <label for="result">Date: </label>
+<!--        <script>result.getElementById("result").innerHTML = "";</script>-->
+        <div id="result"><input type="text"></div>
+        
+<!--        <div><input id="result" type="text" class="result"><div>-->
+        <label for="title">Title: </label>
+        <input type="text" id="title">
+
+        <button id="add2db">Add</button>
+
+        <button id="viewDB">Refresh Datbase</button>
+        <button id="delDB">Delete Datbase</button>
+        
+        
+
+            
+            
+
 
         
 <!--        <div id="result"></div>-->
