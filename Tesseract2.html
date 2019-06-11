@@ -323,6 +323,7 @@ document.getElementById('download').addEventListener('click', function() {
         
 <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
         
+<!--
 var db = new Dexie("MyPantry");
     db.version(1).stores({food: '++id,name,date'});
         
@@ -331,6 +332,7 @@ async function main () {
     var id = await db.food.add({name: })
         
 }
+-->
         
 <!---------------------------------------- End of database ---------------------------------------->        
 
@@ -359,7 +361,7 @@ console.log("loaded...", "$$$$");
         <span id="progress"></span>
         <h6>Result</h6>         
 
-        <label for="title">Date: </label><div id="result" contenteditable="true"></div>
+        <label for="title">Date: </label><input type="text" name="title" id="result" contenteditable="true"></input>
 <!--        <div><input id="result" type="text" class="result"></div>-->
         <label for="title">Title: </label>
         <input type="text" name="title">
