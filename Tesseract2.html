@@ -3,6 +3,7 @@
 <head>
   <title>Testing Tesseract</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style2.css">
   <!-- <script src='https://unpkg.com/tesseract.js@v2.0.0-alpha.4/dist/tesseract.min.js'></script> -->
   <!-- Using a free CDN -->
   <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
@@ -368,15 +369,18 @@ console.log("loaded...", "$$$$");
         <button id="viewDB">Refresh Datbase</button>
         <button id="delDB">Delete Datbase</button>
 
+            
+            
 <script>
 
+var elmFile = document.getElementById('fileSelector');
 var elmAdd = document.getElementById('add2db');
 var elmView = document.getElementById('viewDB');
-var elmDeldb = document.getElementById('delDB');
+//var elmDeldb = document.getElementById('delDB');
 
 elmAdd.addEventListener('click', handleAdd, false);
 elmView.addEventListener('click', handleView, false);
-elmDeldb.addEventListener('click', handleDeleteDB, false);
+//elmDeldb.addEventListener('click', handleDeleteDB, false);
 
 var elmTitle = document.getElementById('title');
 var elmArtist = document.getElementById('date');
@@ -386,11 +390,11 @@ var elmMessages = document.getElementById('messages');
 function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 
 // Delete Database
-function handleDeleteDB(){
-  db.delete();
-  handleView();
-  xalert("You'll need to refresh");
-}
+//function handleDeleteDB(){
+//  db.delete();
+//  handleView();
+//  xalert("You'll need to refresh");
+//}
 
 var db = new Dexie("visDB");
 db.version(1).stores({id3: "++id, title, date"});
@@ -414,10 +418,10 @@ function handleView() {
     })
 }
 
-function handleRemove(i){
-  db.id3.where("id").equals(i).delete();
-  handleView();
-}
+//function handleRemove(i){
+//  db.id3.where("id").equals(i).delete();
+//  handleView();
+//}
 
 handleView();
 
