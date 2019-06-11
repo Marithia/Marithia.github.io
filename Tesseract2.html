@@ -360,18 +360,19 @@ console.log("loaded...", "$$$$");
 
         <span id="progress"></span>
         <h6>Result</h6>         
-
+<label id="fileSelector"></label>
+            <table id="display" border="1"></table>
         <label for="result">Date: </label><div id="result" contenteditable="true"></div>
 <!--        <div><input id="result" type="text" class="result"></div>-->
         <label for="title">Title: </label>
-        <input type="text" name="title">
+        <input type="text" id="title">
 
         <button id="add2db">Add</button>
 
         <button id="viewDB">Refresh Datbase</button>
         <button id="delDB">Delete Datbase</button>
-        <label id="fileSelector"></label>
-        <table id="display" border="1"></table>
+        
+        
 
             
             
@@ -409,12 +410,12 @@ function handleFileSelection(e) {
 ID3.loadTags(url, function() {
     var tags = ID3.getAllTags(url);
 
-if (tags.title) {
+if (tags.title !== undefined) {
     elmTitle.value = tags.title;
 }else{
      elmTitle.value = "";
 }
-if (tags.result) {
+if (tags.result !== undefined) {
     elmresult.value = tags.result;
 }else{
     elmDate.value = "";
@@ -426,7 +427,7 @@ tags: ["result", "title"]
 }
 );
 
-  handleView();
+handleView();
 }
     
 function handleAdd(){
