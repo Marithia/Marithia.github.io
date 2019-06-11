@@ -386,7 +386,7 @@ elmView.addEventListener('click', handleView, false);
 //elmDeldb.addEventListener('click', handleDeleteDB, false);
 
 var elmTitle = document.getElementById('title');
-var elmArtist = document.getElementById('date');
+var elmDate = document.getElementById('date');
 var elmTable = document.getElementById('display');
 
 var elmMessages = document.getElementById('messages');
@@ -412,10 +412,10 @@ if (tags.title) {
 }else{
      elmTitle.value = "";
 }
-if (tags.artist) {
-    elmArtist.value = tags.artist;
+if (tags.date) {
+    elmDate.value = tags.artist;
 }else{
-    elmArtist.value = "";
+    elmDate.value = "";
 }
 }, 
 {
