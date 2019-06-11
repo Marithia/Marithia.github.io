@@ -356,7 +356,30 @@ console.log("loaded...", "$$$$");
  -->
         <!-- <img src="March.png" alt=" " width="300"> -->
 
-<script>
+
+            
+        <hr>
+
+        <span id="progress"></span>
+        <h6>Result</h6>         
+<label id="fileSelector"></label>
+            <table id="display" border="1"></table>
+        <label for="result">Date: </label>
+<!--        <script>result.getElementById("result").innerHTML = "";</script>-->
+        <div id="result"><input type="text"></div>
+        
+<!--        <div><input id="result" type="text" class="result"><div>-->
+        <label for="title">Title: </label>
+        <input type="text" id="title">
+
+        <button id="add2db">Add</button>
+
+        <button id="viewDB">Refresh Datbase</button>
+        <button id="delDB">Delete Datbase</button>
+        
+        
+
+ <script>
 
 var elmFile = document.getElementById('fileSelector');
 var elmAdd = document.getElementById('add2db');
@@ -436,30 +459,7 @@ function handleRemove(i){
 
 handleView();
 
-</script>
-            
-        <hr>
-
-        <span id="progress"></span>
-        <h6>Result</h6>         
-<label id="fileSelector"></label>
-            <table id="display" border="1"></table>
-        <label for="result">Date: </label>
-<!--        <script>result.getElementById("result").innerHTML = "";</script>-->
-        <div id="result"><input type="text"></div>
-        
-<!--        <div><input id="result" type="text" class="result"><div>-->
-        <label for="title">Title: </label>
-        <input type="text" id="title">
-
-        <button id="add2db">Add</button>
-
-        <button id="viewDB">Refresh Datbase</button>
-        <button id="delDB">Delete Datbase</button>
-        
-        
-
-            
+</script>           
             
 
 
