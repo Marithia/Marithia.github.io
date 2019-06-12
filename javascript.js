@@ -1,5 +1,3 @@
-
-
 var elmFile = document.getElementById('fileSelector');
 var elmAdd = document.getElementById('add2db');
 var elmView = document.getElementById('viewDB');
@@ -77,5 +75,4 @@ function handleRemove(i){
 }
 
 handleView();
-
-    
+ 
