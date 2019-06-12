@@ -10,7 +10,7 @@ elmView.addEventListener('click', handleView, false);
 
 var elmTitle = document.getElementById('title');
 var elmresult = document.getElementById('result');
-var elmTable = document.getElementById('display');
+var elmTable = document.getElementById('display', 'orderby');
 
 var elmMessages = document.getElementById('messages');
 function xalert(message) {elmMessages.innerHTML += message + "<br>";}
