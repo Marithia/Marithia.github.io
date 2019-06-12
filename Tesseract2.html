@@ -19,7 +19,7 @@
 
 <button class="accordion">Inventory</button>
 <div class="panel">
-	
+
             
         <hr>
 
@@ -180,177 +180,11 @@ document.getElementById('download').addEventListener('click', function() {
 }, false);
 
 
-////////End of download image script, gotten from https://jsfiddle.net/wboykinm/fL0q2uce/////////   
-
-// var c = document.getElementById('c'),
-//                 o = c.getContext('2d');
-
-//             function reset_canvas(){
-//                 o.fillStyle = 'white'
-//                 o.fillRect(0, 0, c.width, c.height)
-//                 o.fillStyle = 'black'   
-//             }
-// }
-
-
-// document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
-//             document.body.ondragend = function(){ document.body.className = ''; return false }
-//             document.body.onclick = function(){document.body.className = '';}
-//             document.body.ondrop = function(e){
-//                 e.preventDefault();
-//                 document.body.className = '';
-//                 picked_file(e.dataTransfer.files[0]);
-//                 return false;
-//             }
-
-//              function open_picker(){
-//                  var e = document.createEvent("MouseEvents");    
-//                  e.initEvent('click', true, true);
-//                  document.getElementById('picker').dispatchEvent(e);
-//              }
-
-//             function picked_file(file){
-//                 if(!file) return;
-//                  document.getElementById("output").className = 'processing'
-
-//                 var ext = file.name.split('.').slice(-1)[0];
-//                 var reader = new FileReader();
-
-//                 if(file.type == "image/x-portable-bitmap" || ext == 'pbm' || ext == 'pgm' || ext == 'pnm' || ext == 'ppm'){
-//                     reader.onload = function(){
-//                         reset_canvas();
-//                         document.getElementById("text").innerHTML = 'Reading..'
-//                         o.font = '30px sans-serif'
-//                         o.fillText('No previews for NetPBM format.', 50, 100);
-//                         runOCR(new Uint8Array(reader.result), true);
-//                     }
-//                     reader.readAsArrayBuffer(file)
-//                 }else{
-//                     reader.onload = function(){
-//                         var img = new Image();
-//                         img.src = reader.result;
-//                         img.onerror = function(){
-//                             reset_canvas();
-//                             o.font = '30px sans-serif'
-//                             o.fillText('Error: Invalid Image ' + file.name, 50, 100);
-//                         }
-//                         img.onload = function(){
-//                             document.getElementById("text").innerHTML = 'Reading...'
-//                             reset_canvas();
-//                             var rat = Math.min(c.width / img.width, c.height / img.height);
-//                             o.drawImage(img, 0, 0, img.width * rat, img.height * rat)
-//                             var tmp = document.createElement('canvas')
-//                             tmp.width = img.width;
-//                             tmp.height = img.height;
-//                             var ctx = tmp.getContext('2d')
-//                             ctx.drawImage(img, 0, 0)
-//                             var image_data = ctx.getImageData(0, 0, tmp.width, tmp.height);
-//                             runOCR(image_data, true)
-//                         }
-                        
-//                     }
-//                     reader.readAsDataURL(file)
-//                 }
-                
-//             }
-
-// Tesseract.recognize(url).then(function (result) {
-//             var resultText = result.text ? result.text.trim() : '';
-
-//             //show the result
-            
-//             $('blockquote p').html('&bdquo;' + resultText + '&ldquo;');
-//             $('blockquote footer').text('(' + resultText.length + ' characters)');
-//         });
-
-      // let img = new Image()
-      // img.src = "image.png"
-      // img.onload = function(){
-
-      //   console.log("loaded...", "$$$$");
-
-      //   Tesseract.recognize().progress((progress)=>{
-
-      // if(progress.status === "recognizing text"){
-      // $('#progress').text(progress.progress*100 + "%");
-      // }
-
-      //   }).then((result)=>{
-
-      //   console.log(result, "$$$$");
-
-      //   $('#result').text(result.text);
-
-      //   })
-      //}
 
     
 
 </script>
-<!---------------------------------------- End of picker script ---------------------------------------->
 
-<!---------------------------------------- Start of database ---------------------------------------->
-        
-<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
-        
-<!--
-var db = new Dexie("MyPantry");
-    db.version(1).stores({food: '++id,name,date'});
-        
-async function main () {
-        
-    var id = await db.food.add({name: })
-        
-}
--->
-        
-<!---------------------------------------- End of database ---------------------------------------->        
-
-<!-- <script>   
-console.log("loaded...", "$$$$");
-
-        Tesseract.recognize(image).progress((progress)=>{
-
-      if(progress.status === "recognizing text"){
-      $('#progress').text(progress.progress*100 + "%");
-      }
-
-        }).then((result)=>{
-
-        console.log(result, "$$$$");
-
-        $('#result').text(result.text);
-
-        })
-</script>
- -->
-        <!-- <img src="March.png" alt=" " width="300"> -->
-
-<!-- <button class="accordion">Inventory</button>
-<div class="panel">
-            
-        <hr>
-
-        <span id="progress"></span>
-        <h6>Result</h6>         
-		<label id="fileSelector"></label>
-            
-        <label for="result">Date: </label>
-
-        <textarea id="result"><input type="text" id="result"></textarea>
-        
-
-        <label for="title">Title: </label>
-        <input type="text" id="title">
-
-        <button src="Database.html" id="add2db">Add</button>
-
-        <table id="display" border="1"></table>
-
-        <button id="viewDB">Refresh Datbase</button>
-        <button id="delDB">Delete Datbase</button>
-
-</div> -->
 
 
 <script>
@@ -372,92 +206,7 @@ for (i = 0; i < acc.length; i++) {
         
 <script type="text/javascript" src ="javascript.js"></script>        
 
-<!--  <script>
 
-var elmFile = document.getElementById('fileSelector');
-var elmAdd = document.getElementById('add2db');
-var elmView = document.getElementById('viewDB');
-//var elmDeldb = document.getElementById('delDB');
-
-elmFile.addEventListener('change', handleFileSelection, false);
-elmAdd.addEventListener('click', handleAdd, false);
-elmView.addEventListener('click', handleView, false);
-//elmDeldb.addEventListener('click', handleDeleteDB, false);
-
-var elmTitle = document.getElementById('title');
-var elmresult = document.getElementById('result');
-var elmTable = document.getElementById('display');
-
-var elmMessages = document.getElementById('messages');
-function xalert(message) {elmMessages.innerHTML += message + "<br>";}
-
-// Delete Database
-//function handleDeleteDB(){
-//  db.delete();
-//  handleView();
-//  xalert("You'll need to refresh");
-//}
-
-var db = new Dexie("visDB");
-db.version(1).stores({id3: "++id, title, result"});
-db.open().catch(function(e) {xalert("Open failed: " + e);});
-
-function handleFileSelection(e) {
-ID3.loadTags(url, function() {
-    var tags = ID3.getAllTags(url);
-
-if (tags.title !== undefined) {
-    elmTitle.value = tags.title;
-}else{
-     elmTitle.value = "";
-}
-if (tags.result !== undefined) {
-    elmresult.value = tags.result;
-}else{
-    elmresult.value = "";
-}
-}, 
-{
-dataReader: ID3.FileAPIReader(fileStore),
-tags: ["result", "title"]
-}
-);
-
-handleView();
-}
-    
-function handleAdd(){
-    var title = elmTitle.value;
-    var result = elmresult.value;
-    db.id3.add({title: title, result: result});
-    handleView();
-}
-
-function handleView() {
-    elmTable.innerHTML = "";
-    db.id3.each(function(results) {
-        var tr = "<tr>";
-        var td1 = "<td>" + results.title + "</td>";
-        var td2 = "<td>" + results.result + "</td>";
-        var td3 = "<td><a onclick=\"handleRemove(" + results.id + ")\">Remove</a></td>";
-        var tr4 = "</tr></td>";
-        elmTable.innerHTML = elmTable.innerHTML + tr + td1 + td2 + td3 + tr4;
-    })
-}
-
-function handleRemove(i){
-  db.id3.where("id").equals(i).delete();
-  handleView();
-}
-
-handleView();
-
-</script>        -->    
-            
-
-
-        
-<!--        <div id="result"></div>-->
 
         </div>
 
