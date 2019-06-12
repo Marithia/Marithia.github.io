@@ -74,70 +74,7 @@
 <br>
 
 </div>
-<!--
-<script type="text/javascript">
-	document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
-            document.body.ondragend = function(){ document.body.className = ''; return false }
-            document.body.onclick = function(){document.body.className = '';}
-            document.body.ondrop = function(e){
-                e.preventDefault();
-                document.body.className = '';
-                picked_file(e.dataTransfer.files[0]);
-                return false;
-            }
 
-             function open_picker(){
-                 var e = document.createEvent("MouseEvents");    
-                 e.initEvent('click', true, true);
-                 document.getElementById('picker').dispatchEvent(e);
-             }
-
-            function picked_file(file){
-                if(!file) return;
-                 document.getElementById("output").className = 'processing'
-
-                var ext = file.name.split('.').slice(-1)[0];
-                var reader = new FileReader();
-
-                if(file.type == "image/x-portable-bitmap" || ext == 'pbm' || ext == 'pgm' || ext == 'pnm' || ext == 'ppm'){
-                    reader.onload = function(){
-                        reset_canvas();
-                        document.getElementById("text").innerHTML = 'Reading..'
-                        o.font = '30px sans-serif'
-                        o.fillText('No previews for NetPBM format.', 50, 100);
-                        runOCR(new Uint8Array(reader.result), true);
-                    }
-                    reader.readAsArrayBuffer(file)
-                }else{
-                    reader.onload = function(){
-                        var img = new Image();
-                        img.src = reader.result;
-                        img.onerror = function(){
-                            reset_canvas();
-                            o.font = '30px sans-serif'
-                            o.fillText('Error: Invalid Image ' + file.name, 50, 100);
-                        }
-                        img.onload = function(){
-                            document.getElementById("text").innerHTML = 'Reading...'
-                            reset_canvas();
-                            var rat = Math.min(c.width / img.width, c.height / img.height);
-                            o.drawImage(img, 0, 0, img.width * rat, img.height * rat)
-                            var tmp = document.createElement('canvas')
-                            tmp.width = img.width;
-                            tmp.height = img.height;
-                            var ctx = tmp.getContext('2d')
-                            ctx.drawImage(img, 0, 0)
-                            var image_data = ctx.getImageData(0, 0, tmp.width, tmp.height);
-                            runOCR(image_data, true)
-                        }
-                        
-                    }
-                    reader.readAsDataURL(file)
-                }
-                
-            }
-</script>
--->
 
 <!---------------------------------------- Start of the camera script ---------------------------------------->
 <script>
