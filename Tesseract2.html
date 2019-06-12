@@ -15,6 +15,8 @@
       <div class="row">
         <div class="col-sm-12">
 
+<button class="accordion">Take a picture!</button>
+<div class="panel">
         	<video id="video" width="640" height="480" autoplay></video>
             <button id="snap">Take a photo!</button>
             <canvas id="canvas" width="640" height="480"></canvas>
@@ -42,6 +44,7 @@
 <br>
 <br>
 
+</div>
 <!--
 <script type="text/javascript">
 	document.body.ondragover = function(){ document.body.className = 'dragging'; return false }
@@ -356,7 +359,8 @@ console.log("loaded...", "$$$$");
  -->
         <!-- <img src="March.png" alt=" " width="300"> -->
 
-
+<button class="accordion">Inventory</button>
+<div class="panel">
             
         <hr>
 
@@ -378,6 +382,25 @@ console.log("loaded...", "$$$$");
 
         <button id="viewDB">Refresh Datbase</button>
         <button id="delDB">Delete Datbase</button>
+
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
         
 <script type="text/javascript" src ="javascript.js"></script>        
 
