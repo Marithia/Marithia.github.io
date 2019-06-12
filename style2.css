@@ -26,3 +26,7 @@ a{color: red; font-weight: bold;}
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
+textarea {
+	resize: none;
+}
