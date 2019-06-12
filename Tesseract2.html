@@ -17,8 +17,9 @@
       <div class="row">
         <div class="col-sm-12">
 
-<button class="accordion">Inventory</button>
+<button onclick="slideUp('panel');">Inventory</button>
 <div class="panel">
+
             
         <hr>
 
@@ -44,7 +45,7 @@
 
 </div>
 
-<button class="accordion">Take a picture!</button>
+<button onclick="slideDown(panel);">Take a picture!</button>
 <div class="panel">
         	<video id="video" width="640" height="480" autoplay></video>
             <button id="snap">Take a photo!</button>
@@ -352,7 +353,7 @@ console.log("loaded...", "$$$$");
 </div> -->
 
 
-<script>
+<!-- <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -366,6 +367,19 @@ for (i = 0; i < acc.length; i++) {
       panel.style.maxHeight = panel.scrollHeight + "px";
     } 
   });
+}
+</script> -->
+
+<script>
+function slideUp(el) {
+  var elem = document.getElementById(el);
+  elem.style.transition = "all 1s ease-in-out";
+  elem.style.height = "0px";
+}
+function slideDown(el) {
+  var elem = document.getElementById(el);
+  elem.style.transition = "all 1s ease-in-out";
+  elem.style.height = "400px";
 }
 </script>
         

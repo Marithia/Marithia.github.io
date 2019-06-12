@@ -30,3 +30,12 @@ a{color: red; font-weight: bold;}
 textarea {
 	resize: none;
 }
+
+#panel{
+  /*width:400px;
+  height:400px;*/
+  background:orange;
+  margin:0 auto;
+  margin-top:3%;
+  overflow:hidden;
+}
