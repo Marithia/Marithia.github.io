@@ -66,7 +66,6 @@ function handleView() {
         var td3 = "<td><a onclick=\"handleRemove(" + results.id + ")\">Remove</a></td>";
         var tr4 = "</tr></td>";
         elmTable.innerHTML = elmTable.innerHTML + tr + td1 + td2 + td3 + tr4;
-        results.orderby('result');
     })
 }
 
