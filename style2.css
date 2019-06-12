@@ -2,7 +2,7 @@ html{margin-top: 2%; margin-left: 2%;}
 td{padding: 5px 15px;}
 a{color: red; font-weight: bold;}
 
-.accordion {
+/*.accordion {
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -25,7 +25,7 @@ a{color: red; font-weight: bold;}
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-}
+}*/
 
 textarea {
 	resize: none;
