@@ -12,8 +12,8 @@ var elmTitle = document.getElementById('title');
 var elmresult = document.getElementById('result');
 var elmTable = document.getElementById('display', 'orderby');
 
-// var elmMessages = document.getElementById('messages');
-// function xalert(message) {elmMessages.innerHTML += message + "<br>";}
+var elmMessages = document.getElementById('messages');
+function xalert(message) {elmMessages.innerHTML += message + "<br>";}
 
 // Delete Database
 //function handleDeleteDB(){
