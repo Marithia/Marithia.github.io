@@ -16,15 +16,14 @@ a{color: red; font-weight: bold;}
 }
 
 .active, .accordion:hover {
-  background-color: #ccc;
+  background-color: #ccc; 
 }
 
 .panel {
   padding: 0 18px;
+  display: none;
   background-color: white;
-  max-height: 0px ;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
 }
 
 textarea {
