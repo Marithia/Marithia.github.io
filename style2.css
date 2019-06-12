@@ -23,6 +23,7 @@ a{color: red; font-weight: bold;}
   padding: 0 18px;
   background-color: white;
   max-height: 500px ;
+  min-height: 0px ;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
